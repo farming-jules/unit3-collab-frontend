@@ -1,23 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import Card from 'react-bootstrap/Card'
-import Row from 'react-bootstrap/Row'
 import CardGroup from 'react-bootstrap/CardGroup'
 
 import FormsMyProfile from '@/forms/my/Profile'
 
-
-import Loading from '@/components/Loading'
-
 class PagesProfileEdit extends React.Component {
-  constructor(props) {
-    super(props)
-
-  }
-
   componentDidMount() {
 
   }
@@ -27,7 +16,6 @@ class PagesProfileEdit extends React.Component {
   }
 
   render() {
-
     return (
       <div id="pages-auth-signup" className="container text-center my-3">
         <h1 className="mb-3">Profile Edit Page</h1>
@@ -39,24 +27,24 @@ class PagesProfileEdit extends React.Component {
           <div className="col-12 col-md-5 col-lg-4">
             <CardGroup>
               <Card>
-                <div style={{height: 160 + 'px', width: 100 + 'px'}}></div>
+                <div style={{ height: `${160}px`, width: `${100}px` }} />
               </Card>
               <Card>
-                <div style={{height: 160 + 'px', width: 100 + 'px'}}></div>
+                <div style={{ height: `${160}px`, width: `${100}px` }} />
               </Card>
               <Card>
-                <div style={{height: 160 + 'px', width: 100 + 'px'}}></div>
+                <div style={{ height: `${160}px`, width: `${100}px` }} />
               </Card>
             </CardGroup>
             <CardGroup>
               <Card>
-                <div style={{height: 160 + 'px', width: 100 + 'px'}}></div>
+                <div style={{ height: `${160}px`, width: `${100}px` }} />
               </Card>
               <Card>
-                <div style={{height: 160 + 'px', width: 100 + 'px'}}></div>
+                <div style={{ height: `${160}px`, width: `${100}px` }} />
               </Card>
               <Card>
-                <div style={{height: 160 + 'px', width: 100 + 'px'}}></div>
+                <div style={{ height: `${160}px`, width: `${100}px` }} />
               </Card>
             </CardGroup>
           </div>
@@ -67,11 +55,9 @@ class PagesProfileEdit extends React.Component {
 }
 
 PagesProfileEdit.propTypes = {
-  history: PropTypes.shape().isRequired,
 }
 
-const mapStateToProps = (state) => ({
-
+const mapStateToProps = () => ({
 })
 
 const mapDispatchToProps = {

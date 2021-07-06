@@ -7,7 +7,7 @@ const PagesHome = () => (
     <header className="text-center border-bottom">
       <h1>Home Page</h1>
     </header>
-    <div className="d-flex justify-content-center align-items-center" style={{height: 80 + 'vh'}}>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: `${80}vh` }}>
       <Link to="/auth/signup">
         <Button variant="warning" type="button">
           Create Account

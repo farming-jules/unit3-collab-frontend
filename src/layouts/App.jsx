@@ -1,11 +1,11 @@
 import React from 'react'
-import './App.css'
 import PropTypes from 'prop-types'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 
 import LayoutsNavbar from '@/layouts/Navbar'
-import MySideBar from "@/layouts/MySideBar";
+import MySideBar from '@/layouts/MySideBar'
 
 import PagesHome from '@/pages/Home'
 
@@ -18,16 +18,15 @@ import PagesProfileEdit from '@/pages/my/ProfileEdit'
 
 import PagesNotFound from '@/pages/NotFound'
 
-
-
 import { getCurrentUser } from '@/actions/my/profile'
 
 class App extends React.Component {
-  state = { open: false };
+  constructor(props) {
+    super(props)
 
-  toggleMenu = () => {
-    this.setState({ open: !this.state.open });
-    console.log(this.state.open);
+    this.state = {
+      loaded: false
+    }
   }
 
   componentDidMount() {
@@ -35,13 +34,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { open } = this.state;
-
     return (
       <Router>
         <LayoutsNavbar toggleMenu={this.toggleMenu} />
         <div className="d-flex">
-          <MySideBar open={open} />
+
+          <MySideBar />
 
           <Switch>
             <Route exact path="/" component={PagesHome} />
@@ -72,6 +70,3 @@ const mapDispatchToProps = {
   getCurrentUser
 }
 export default connect(null, mapDispatchToProps)(App)
-
-
-
