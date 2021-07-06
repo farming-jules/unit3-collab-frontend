@@ -5,7 +5,7 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import LayoutsNavbar from '@/layouts/Navbar'
-import SideBar from "@/layouts/SideBar";
+import MySideBar from "@/layouts/MySideBar";
 
 import PagesHome from '@/pages/Home'
 
@@ -39,25 +39,27 @@ class App extends React.Component {
 
     return (
       <Router>
-        <LayoutsNavbar toggleMenu={this.toggleMenu}/>
-        <SideBar open={open} />
+        <LayoutsNavbar toggleMenu={this.toggleMenu} />
+        <div className="d-flex">
+          <MySideBar open={open} />
 
-        <Switch>
-          <Route exact path="/" component={PagesHome} />
+          <Switch>
+            <Route exact path="/" component={PagesHome} />
 
-          <Route path="/auth">
-            <Route exact path="/auth/signup" component={PagesAuthSignup} />
-            <Route exact path="/auth/login" component={PagesAuthLogin} />
-          </Route>
+            <Route path="/auth">
+              <Route exact path="/auth/signup" component={PagesAuthSignup} />
+              <Route exact path="/auth/login" component={PagesAuthLogin} />
+            </Route>
 
-          <Route path="/my">
-            <Route exact path="/my" component={PagesMyIndex} />
-            <Route exact path="/my/profile" component={PagesProfileShow} />
-            <Route exact path="/my/profile/edit" component={PagesProfileEdit} />
-          </Route>
+            <Route path="/my">
+              <Route exact path="/my" component={PagesMyIndex} />
+              <Route exact path="/my/profile" component={PagesProfileShow} />
+              <Route exact path="/my/profile/edit" component={PagesProfileEdit} />
+            </Route>
 
-          <Route component={PagesNotFound} />
-        </Switch>
+            <Route component={PagesNotFound} />
+          </Switch>
+        </div>
       </Router>
     )
   }
