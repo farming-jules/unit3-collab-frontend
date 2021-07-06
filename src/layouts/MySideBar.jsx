@@ -24,37 +24,45 @@ class MySideBar extends React.Component {
     if (pathname !== '/my') return null
 
     return (
-      <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-        <Tab eventKey="Matches" title="Matches">
-          <div className="row ml-0 mr-0">
-            <MatchCard />
-            <MatchCard />
-            <MatchCard />
-            <MatchCard />
-            <MatchCard />
-            <MatchCard />
-            <MatchCard />
+      <>
+        <Link to="/my/profile">
+          <div className="sidebar-header d-flex align-items-center">
+            <img className="h-100 mr-2" src="https://via.placeholder.com/50x50.png" alt="" style={{ 'border-radius': `${50}%` }} />
+            <h3 className="mb-0">My Profile</h3>
           </div>
-        </Tab>
-        <Tab eventKey="Messages" title="Messages">
-          <ListGroup>
-            <ListGroup.Item>Cras justo odio</ListGroup.Item>
-            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-          </ListGroup>
-        </Tab>
-        <Tab eventKey="Likes" title="Likes">
-          <ListGroup>
-            <ListGroup.Item>Cras justo odio</ListGroup.Item>
-            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-          </ListGroup>
-        </Tab>
-      </Tabs>
+        </Link>
+        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+          <Tab eventKey="Matches" title="Matches">
+            <div className="row ml-0 mr-0">
+              <MatchCard />
+              <MatchCard />
+              <MatchCard />
+              <MatchCard />
+              <MatchCard />
+              <MatchCard />
+              <MatchCard />
+            </div>
+          </Tab>
+          <Tab eventKey="Messages" title="Messages">
+            <ListGroup>
+              <ListGroup.Item>Cras justo odio</ListGroup.Item>
+              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+            </ListGroup>
+          </Tab>
+          <Tab eventKey="Likes" title="Likes">
+            <ListGroup>
+              <ListGroup.Item>Cras justo odio</ListGroup.Item>
+              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+            </ListGroup>
+          </Tab>
+        </Tabs>
+      </>
     )
   }
 
@@ -66,13 +74,13 @@ class MySideBar extends React.Component {
     return (
       <>
         <div className="sidebar-header d-flex align-items-center">
-          <Link to="/my">
+          <img className="h-100 mr-2" src="https://via.placeholder.com/50x50.png" alt="" style={{ 'border-radius': `${50}%` }} />
+          <h3 className="mb-0">My Profile</h3>
+          <Link className="h-100 ml-auto" to="/my">
             <Button variant="warning" type="button">
               Find Matches
             </Button>
           </Link>
-          <img className="h-100 mr-2" src="https://via.placeholder.com/50x50.png" alt="" style={{ 'border-radius': `${50}%` }} />
-          <h3 className="mb-0">My Profile</h3>
         </div>
         <div className="d-flex flex-column mt-3 ml-3 mr-3">
           <h3 className="text-center">Account Settings</h3>
