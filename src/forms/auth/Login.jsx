@@ -23,6 +23,7 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
         className={`form-control ${(errors.password && touched.password ? ' is-invalid' : '')}`}
         name="password"
         type="password"
+        autoComplete="on"
       />
       <ErrorMessage component="div" className="invalid-feedback" name="password" />
     </div>

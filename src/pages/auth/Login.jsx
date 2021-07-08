@@ -15,10 +15,13 @@ class PagesAuthLogin extends React.Component {
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
   }
 
-  handleLoginSubmit(values) {
+  handleLoginSubmit(values, formik) {
     this.props.authLogin(values).then(() => {
       const { history: { push } } = this.props
       push('/my')
+      console.log(this.props)
+    }).finally(() => {
+      formik.setSubmitting(false)
     })
   }
 

@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENT_USER: {
       return produce(state, (draft) => {
-        draft.currentUser = action.payload.user
+        draft.currentUser = action.payload
       })
     }
     case UNSET_CURRENT_USER: {

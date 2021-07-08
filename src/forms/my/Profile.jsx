@@ -6,25 +6,25 @@ import * as yup from 'yup'
 const RenderForm = ({ errors, touched, isSubmitting }) => (
   <Form>
     <div className="form-group">
-      <label htmlFor="firstName">First Name</label>
+      <label htmlFor="name">First Name</label>
       <Field
-        id="firstName"
-        className={`form-control ${(errors.firstName && touched.firstName ? ' is-invalid' : '')}`}
-        name="firstName"
-        type="firstName"
+        id="name"
+        className={`form-control ${(errors.name && touched.name ? ' is-invalid' : '')}`}
+        name="name"
+        type="name"
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="firstName" />
+      <ErrorMessage component="div" className="invalid-feedback" name="name" />
     </div>
 
     <div className="form-group">
-      <label htmlFor="dob">Date Of Birth</label>
+      <label htmlFor="dateOfBirth">Date Of Birth</label>
       <Field
-        id="dob"
-        className={`form-control ${(errors.dob && touched.dob ? ' is-invalid' : '')}`}
-        name="dob"
-        type="dob"
+        id="dateOfBirth"
+        className={`form-control ${(errors.dateOfBirth && touched.dateOfBirth ? ' is-invalid' : '')}`}
+        name="dateOfBirth"
+        type="dateOfBirth"
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="dob" />
+      <ErrorMessage component="div" className="invalid-feedback" name="dateOfBirth" />
     </div>
 
     <div className="form-group">
@@ -94,14 +94,14 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
     </div>
 
     <div className="form-group">
-      <label htmlFor="bio">Bio</label>
+      <label htmlFor="Bio">Bio</label>
       <Field
-        id="bio"
-        className={`form-control ${(errors.bio && touched.bio ? ' is-invalid' : '')}`}
-        name="bio"
-        type="bio"
+        id="Bio"
+        className={`form-control ${(errors.Bio && touched.Bio ? ' is-invalid' : '')}`}
+        name="Bio"
+        type="Bio"
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="bio" />
+      <ErrorMessage component="div" className="invalid-feedback" name="Bio" />
     </div>
 
     <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
@@ -114,37 +114,28 @@ RenderForm.propTypes = {
 }
 
 const loginSchema = yup.object().shape({
-  firstName: yup.string().required('Required'),
-  dob: yup.string().required('Required'),
+  name: yup.string().required('Required'),
+  dateOfBirth: yup.string().required('Required'),
   email: yup.string().email().required('Required'),
   gender: yup.string().required('Required'),
   sexualOrientation: yup.string().required('Required'),
   passion: yup.string().required('Required'),
   lookingFor: yup.string().required('Required'),
   location: yup.string().required('Required'),
-  bio: yup.string().required('Required')
+  Bio: yup.string().required('Required')
 })
 
-const FormsMyProfile = ({ onSubmit }) => (
+const FormsMyProfile = ({ onSubmit, initialValues }) => (
   <Formik
-    initialValues={{
-      firstName: '',
-      dob: '',
-      email: '',
-      gender: '',
-      sexualOrientation: '',
-      passion: '',
-      lookingFor: '',
-      location: '',
-      bio: ''
-    }}
+    initialValues={initialValues}
     validationSchema={loginSchema}
     onSubmit={onSubmit}
     component={RenderForm}
   />
 )
 FormsMyProfile.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.shape().isRequired
 }
 
 export default FormsMyProfile

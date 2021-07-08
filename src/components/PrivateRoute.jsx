@@ -13,7 +13,11 @@ const PrivateRoute = ({ component: Component, stateCurrentUser: { currentUser },
 )
 
 PrivateRoute.propTypes = {
-  component: PropTypes.func.isRequired,
+  component: PropTypes.oneOfType([
+    PropTypes.shape(),
+    PropTypes.element,
+    PropTypes.func
+  ]).isRequired,
   stateCurrentUser: PropTypes.shape().isRequired
 }
 

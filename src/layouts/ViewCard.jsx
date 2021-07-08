@@ -43,8 +43,8 @@ const ViewCard = () => (
         <hr />
       </div>
       <ButtonGroup>
-        <Button variant="outline-danger" className="btn-lg mr-3 text-center" style={{ 'border-radius': `${50}%` }}>❌</Button>
-        <Button variant="outline-success" className="btn-lg ml-3 text-center" style={{ 'border-radius': `${50}%` }}>💚</Button>
+        <Button variant="outline-danger" className="btn-lg mr-3 text-center" style={{ borderRadius: `${50}%` }}>❌</Button>
+        <Button variant="outline-success" className="btn-lg ml-3 text-center" style={{ borderRadius: `${50}%` }}>💚</Button>
       </ButtonGroup>
     </Card.Body>
   </Card>

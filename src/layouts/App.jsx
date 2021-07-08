@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 import { connect } from 'react-redux'
 
-import { getMyProfile, getCurrentUser } from '@/actions/my/profile'
+import { getMyProfile } from '@/actions/my/profile'
 
 import Loading from '@/components/Loading'
 import PrivateRoute from '@/components/PrivateRoute'
@@ -45,6 +46,18 @@ class App extends React.Component {
 
     return (
       <Router>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+
         <LayoutsNavbar />
         {
           loaded ? (

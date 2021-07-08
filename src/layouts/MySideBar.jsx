@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
@@ -27,7 +28,7 @@ class MySideBar extends React.Component {
       <>
         <Link to="/my/profile">
           <div className="sidebar-header d-flex align-items-center">
-            <img className="h-100 mr-2" src="https://via.placeholder.com/50x50.png" alt="" style={{ 'border-radius': `${50}%` }} />
+            <img className="h-100 mr-2" src="https://via.placeholder.com/50x50.png" alt="" style={{ borderRadius: `${50}%` }} />
             <h3 className="mb-0">My Profile</h3>
           </div>
         </Link>
@@ -67,14 +68,14 @@ class MySideBar extends React.Component {
   }
 
   renderProfile() {
-    const { location: { pathname } } = this.props
+    const { location: { pathname }, stateCurrentUser: { currentUser } } = this.props
 
     if (pathname !== '/my/profile') return null
 
     return (
       <>
         <div className="sidebar-header d-flex align-items-center">
-          <img className="h-100 mr-2" src="https://via.placeholder.com/50x50.png" alt="" style={{ 'border-radius': `${50}%` }} />
+          <img className="h-100 mr-2" src="https://via.placeholder.com/50x50.png" alt="" style={{ borderRadius: `${50}%` }} />
           <h3 className="mb-0">My Profile</h3>
           <Link className="h-100 ml-auto" to="/my">
             <Button variant="warning" type="button">
@@ -84,7 +85,10 @@ class MySideBar extends React.Component {
         </div>
         <div className="d-flex flex-column mt-3 ml-3 mr-3">
           <h3 className="text-center">Account Settings</h3>
-          <FormsMyProfile />
+          <FormsMyProfile
+            initialValues={currentUser}
+            onSubmit={this.handleProfileEditSubmit}
+          />
           <Link className="align-self-center" to="/my/profile/edit">
             <Button variant="warning" type="button">
               Edit Info
@@ -130,7 +134,12 @@ class MySideBar extends React.Component {
 }
 
 MySideBar.propTypes = {
-  location: PropTypes.shape().isRequired
+  location: PropTypes.shape().isRequired,
+  stateCurrentUser: PropTypes.shape().isRequired
 }
 
-export default withRouter(MySideBar)
+const mapStateToProps = (state) => ({
+  stateCurrentUser: state.currentUser
+})
+
+export default connect(mapStateToProps, null)(withRouter(MySideBar))

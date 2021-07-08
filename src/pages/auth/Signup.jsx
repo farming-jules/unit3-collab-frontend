@@ -15,10 +15,12 @@ class PagesAuthSignup extends React.Component {
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this)
   }
 
-  handleSignupSubmit(values) {
+  handleSignupSubmit(values, formik) {
     this.props.authSignup(values).then(() => {
       const { history: { push } } = this.props
       push('/my/profile/edit')
+    }).finally(() => {
+      formik.setSubmitting(false)
     })
   }
 
