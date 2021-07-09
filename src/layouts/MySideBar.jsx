@@ -87,7 +87,6 @@ class MySideBar extends React.Component {
           <h3 className="text-center">Account Settings</h3>
           <FormsMyProfile
             initialValues={currentUser}
-            onSubmit={this.handleProfileEditSubmit}
           />
           <Link className="align-self-center" to="/my/profile/edit">
             <Button variant="warning" type="button">
