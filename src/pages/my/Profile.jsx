@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { Card, CardGroup } from 'react-bootstrap'
@@ -10,13 +11,10 @@ class PagesProfileShow extends React.Component {
     super(props)
 
     this.state = {
-      open: false
     }
   }
 
   componentDidMount() {
-    const { open } = this.state
-    this.setState({ open: !open })
   }
 
   componentWillUnmount() {
@@ -24,33 +22,30 @@ class PagesProfileShow extends React.Component {
   }
 
   render() {
+    const { stateCurrentUser: { currentUser } } = this.props
+
+    if (currentUser.length === 0) return <h2>No Current User</h2>
+
     return (
-      <div id="pages-todos-index" className="container text-center my-3">
+      <div id="pages-todos-index" className="container text-center my-3 d-flex align-items-center flex-column">
         <h1 className="mb-3">Profile Show Page</h1>
-        <div className="d-flex align-items-center flex-column justify-content-center">
-          <ViewCard />
-          <CardGroup>
-            <Card>
-              <div style={{ height: `${100}px`, width: `${130}px` }} />
-            </Card>
-            <Card>
-              <div style={{ height: `${100}px`, width: `${130}px` }} />
-            </Card>
-            <Card>
-              <div style={{ height: `${100}px`, width: `${130}px` }} />
-            </Card>
-          </CardGroup>
-          <CardGroup>
-            <Card>
-              <div style={{ height: `${100}px`, width: `${130}px` }} />
-            </Card>
-            <Card>
-              <div style={{ height: `${100}px`, width: `${130}px` }} />
-            </Card>
-            <Card>
-              <div style={{ height: `${100}px`, width: `${130}px` }} />
-            </Card>
-          </CardGroup>
+        <div className="d-flex flex-column flex-grow-1 align-items-center">
+          <div
+            className="d-flex"
+            style={{ position: 'relative', top: '5%' }}
+          >
+            <ViewCard
+              information={currentUser}
+            />
+            <CardGroup>
+              <Card>
+                <div
+                  className="ml-3"
+                  style={{ height: `${650}px`, width: `${300}px`, border: '1px solid black' }}
+                />
+              </Card>
+            </CardGroup>
+          </div>
         </div>
       </div>
     )
@@ -58,14 +53,11 @@ class PagesProfileShow extends React.Component {
 }
 
 PagesProfileShow.propTypes = {
+  stateCurrentUser: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
-  stateTodos: state.todos
+  stateCurrentUser: state.currentUser
 })
 
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PagesProfileShow)
+export default connect(mapStateToProps, null)(PagesProfileShow)

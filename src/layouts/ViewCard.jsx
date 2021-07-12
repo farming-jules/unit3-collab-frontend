@@ -3,27 +3,29 @@ import PropTypes from 'prop-types'
 import { Card, Carousel, Button, ButtonGroup, Badge } from 'react-bootstrap'
 import moment from 'moment'
 
-const ViewCard = ({ recommendation: { id, name, dateOfBirth, bio, passion }, putLike, putCross }) => (
-  <Card style={{ width: '24rem' }}>
+const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImages }, putLike, putCross }) => (
+  <Card style={{ width: '24rem', border: '1px solid black' }}>
     <Carousel>
-      <Carousel.Item>
+      <Carousel.Item style={{ height: '500px' }}>
         <img
-          className="d-block w-100"
-          src="https://via.placeholder.com/200x250.png"
+          style={{ objectFit: 'cover' }}
+          className="d-block w-100 h-100"
+          src={UserImages && UserImages[0].image ? (UserImages[0].image) : ('https://via.placeholder.com/50x75.png')}
           alt="First slide"
         />
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item style={{ height: '500px' }}>
         <img
-          className="d-block w-100"
-          src="https://via.placeholder.com/200x250.png"
+          style={{ objectFit: 'cover' }}
+          className="d-block w-100 h-100"
+          src={UserImages && UserImages[0].image ? (UserImages[0].image) : ('https://via.placeholder.com/50x75.png')}
           alt="Second slide"
         />
-      </Carousel.Item>
-      <Carousel.Item>
+      </Carousel.Item>      <Carousel.Item style={{ height: '500px' }}>
         <img
-          className="d-block w-100"
-          src="https://via.placeholder.com/200x250.png"
+          style={{ objectFit: 'cover' }}
+          className="d-block w-100 h-100"
+          src={UserImages && UserImages[0].image ? (UserImages[0].image) : ('https://via.placeholder.com/50x75.png')}
           alt="Third slide"
         />
       </Carousel.Item>
@@ -39,7 +41,6 @@ const ViewCard = ({ recommendation: { id, name, dateOfBirth, bio, passion }, put
             className="btn-lg mr-3 text-center"
             style={{ borderRadius: `${50}%` }}
           >❌</Button>
-
           <Button
             onClick={() => { putLike(id) }}
             variant="outline-success"
@@ -53,7 +54,7 @@ const ViewCard = ({ recommendation: { id, name, dateOfBirth, bio, passion }, put
 )
 
 ViewCard.propTypes = {
-  recommendation: PropTypes.shape().isRequired,
+  information: PropTypes.shape().isRequired,
   putLike: PropTypes.func.isRequired,
   putCross: PropTypes.func.isRequired
 }

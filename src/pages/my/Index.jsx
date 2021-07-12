@@ -48,9 +48,9 @@ class PagesMyIndex extends React.Component {
 
     const recommendation = recommendations[0]
     return (
-      <div key={recommendation.id} className="d-flex justify-content-center align-items-center">
+      <div key={recommendation.id} className="d-flex justify-content-center">
         <ViewCard
-          recommendation={recommendation}
+          information={recommendation}
           putLike={this.handlePutLikeSubmit}
           putCross={this.handlePutCrossSubmit}
         />
@@ -62,7 +62,10 @@ class PagesMyIndex extends React.Component {
     return (
       <div id="pages-recommendations-index" className="container text-center my-3">
         <h1 className="mb-3">Index/Main Page</h1>
-        <div className="d-flex justify-content-center">
+        <div
+          className="d-flex flex-column flex-grow-1 h-100"
+          style={{ position: 'relative', top: '5%' }}
+        >
           {this.renderIndex()}
         </div>
       </div>
