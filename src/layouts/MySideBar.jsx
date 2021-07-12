@@ -6,7 +6,7 @@ import { withRouter } from 'react-router'
 
 import MatchCard from '@/layouts/MatchCard'
 
-import FormsMyProfile from '@/forms/my/Profile'
+import FormsMyProfileShow from '@/forms/my/ProfileShow'
 
 import { Button, Tabs, Tab, ListGroup } from 'react-bootstrap'
 
@@ -85,9 +85,11 @@ class MySideBar extends React.Component {
         </div>
         <div className="d-flex flex-column mt-3 ml-3 mr-3">
           <h3 className="text-center">Account Settings</h3>
-          <FormsMyProfile
-            initialValues={currentUser}
-          />
+          <div className="disable-select">
+            <FormsMyProfileShow
+              initialValues={currentUser}
+            />
+          </div>
           <Link className="align-self-center" to="/my/profile/edit">
             <Button variant="warning" type="button">
               Edit Info
