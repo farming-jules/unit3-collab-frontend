@@ -30,8 +30,8 @@ export default (state = initialState, action) => {
     }
     case PUTLIKE_IN_RECOMMENDATION: {
       return produce(state, (draft) => {
-        const index = draft.recommendations.findIndex((recommendation) => recommendation.id === action.payload.recommendation.id)
-        if (index !== -1) draft.recommendations[index] = action.payload.recommendation
+        const index = draft.recommendations.findIndex((recommendation) => recommendation.id === action.payload)
+        if (index !== -1) draft.recommendations.splice(index, 1)
       })
     }
     case GET_RECOMMENDATIONS: {

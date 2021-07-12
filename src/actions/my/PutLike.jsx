@@ -13,11 +13,12 @@ export const updateRecommendation = (id) => (dispatch) => new Promise((resolve, 
     url: 'https://fswdi-api-todos.herokuapp.com/api/my/like',
     data: id
   }).then((resp) => {
-    dispatch(putLikeInRecommendation(resp.data))
+    dispatch(putLikeInRecommendation(id))
     resolve(resp)
   }).catch((err) => {
     reject(err)
   }).finally(() => {
+    dispatch(putLikeInRecommendation(id))
     dispatch(loading(UPDATE_RECOMMENDATION, { loading: false }))
   })
 })

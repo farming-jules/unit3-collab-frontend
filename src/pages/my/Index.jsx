@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import {
   getRecommendations, resetRecommendations,
@@ -37,11 +36,12 @@ class PagesMyIndex extends React.Component {
   }
 
   handlePutCrossSubmit(id) {
+    console.log(id)
     this.props.destroyRecommendation(id)
   }
 
   renderIndex() {
-    const { stateRecommendations: { recommendations, isGetRecommendationsLoading, destroyingIDs } } = this.props
+    const { stateRecommendations: { recommendations, isGetRecommendationsLoading } } = this.props
 
     if (isGetRecommendationsLoading) return <Loading />
     if (recommendations.length === 0) return <h2>No Recommendations</h2>
