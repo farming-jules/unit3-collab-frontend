@@ -10,7 +10,7 @@ const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImag
         <img
           style={{ objectFit: 'cover' }}
           className="d-block w-100 h-100"
-          src={UserImages && UserImages[0].image ? (UserImages[0].image) : ('https://via.placeholder.com/50x75.png')}
+          src={UserImages?.[0]?.image || 'https://via.placeholder.com/50x75.png'}
           alt="First slide"
         />
       </Carousel.Item>
@@ -18,14 +18,14 @@ const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImag
         <img
           style={{ objectFit: 'cover' }}
           className="d-block w-100 h-100"
-          src={UserImages && UserImages[0].image ? (UserImages[0].image) : ('https://via.placeholder.com/50x75.png')}
+          src={UserImages && UserImages[0] && UserImages[0].image ? (UserImages[0].image) : ('https://via.placeholder.com/50x75.png')}
           alt="Second slide"
         />
       </Carousel.Item>      <Carousel.Item style={{ height: '500px' }}>
         <img
           style={{ objectFit: 'cover' }}
           className="d-block w-100 h-100"
-          src={UserImages && UserImages[0].image ? (UserImages[0].image) : ('https://via.placeholder.com/50x75.png')}
+          src={UserImages?.[0]?.image || 'https://via.placeholder.com/50x75.png'}
           alt="Third slide"
         />
       </Carousel.Item>

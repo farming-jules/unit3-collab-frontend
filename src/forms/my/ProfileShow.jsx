@@ -102,15 +102,15 @@ const RenderForm = ({ errors, touched }) => (
     </div>
 
     <div className="form-group">
-      <label htmlFor="Bio">Bio</label>
+      <label htmlFor="bio">bio</label>
       <Field
-        id="Bio"
-        className={`form-control ${(errors.Bio && touched.Bio ? ' is-invalid' : '')}`}
-        name="Bio"
-        type="Bio"
+        id="bio"
+        className={`form-control ${(errors.bio && touched.bio ? ' is-invalid' : '')}`}
+        name="bio"
+        type="bio"
         disabled
       />
-      <ErrorMessage component="div" className="invalid-feedback" name="Bio" />
+      <ErrorMessage component="div" className="invalid-feedback" name="bio" />
     </div>
   </Form>
 )
@@ -128,7 +128,7 @@ const loginSchema = yup.object().shape({
   passion: yup.string().required('Required'),
   lookingFor: yup.string().required('Required'),
   location: yup.string().required('Required'),
-  Bio: yup.string().required('Required')
+  bio: yup.string().required('Required')
 })
 
 const FormsMyProfileShow = ({ onSubmit, initialValues }) => (
