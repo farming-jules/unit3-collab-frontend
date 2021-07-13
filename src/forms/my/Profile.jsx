@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as yup from 'yup'
 
-const RenderForm = ({ errors, touched, isSubmitting }) => (
+const RenderForm = ({ errors, touched, isSubmitting, hasUnfinishedUpload }) => (
   <Form>
     <div className="form-group">
       <label htmlFor="name">First Name</label>
@@ -104,13 +104,14 @@ const RenderForm = ({ errors, touched, isSubmitting }) => (
       <ErrorMessage component="div" className="invalid-feedback" name="bio" />
     </div>
 
-    <button className="btn btn-success" type="submit" disabled={isSubmitting}>Submit</button>
+    <button className="btn btn-success" type="submit" disabled={isSubmitting || hasUnfinishedUpload}>Submit</button>
   </Form>
 )
 RenderForm.propTypes = {
   errors: PropTypes.shape().isRequired,
   touched: PropTypes.shape().isRequired,
-  isSubmitting: PropTypes.bool.isRequired
+  isSubmitting: PropTypes.bool.isRequired,
+  hasUnfinishedUpload: PropTypes.bool.isRequired
 }
 
 const loginSchema = yup.object().shape({
@@ -125,17 +126,18 @@ const loginSchema = yup.object().shape({
   bio: yup.string().required('Required')
 })
 
-const FormsMyProfile = ({ onSubmit, initialValues }) => (
+const FormsMyProfile = ({ onSubmit, initialValues, hasUnfinishedUpload }) => (
   <Formik
     initialValues={initialValues}
     validationSchema={loginSchema}
     onSubmit={onSubmit}
-    component={RenderForm}
+    component={(props) => <RenderForm {...props} hasUnfinishedUpload={hasUnfinishedUpload} />}
   />
 )
 FormsMyProfile.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  initialValues: PropTypes.shape().isRequired
+  initialValues: PropTypes.shape().isRequired,
+  hasUnfinishedUpload: PropTypes.bool.isRequired
 }
 
 export default FormsMyProfile
