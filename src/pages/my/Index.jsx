@@ -30,7 +30,7 @@ class PagesMyIndex extends React.Component {
     this.props.resetRecommendations()
   }
 
-  handlePutLikeSubmit(id) {
+  handlePutLikeSubmit(id, like) {
     console.log(id)
     this.props.updateRecommendation(id)
   }

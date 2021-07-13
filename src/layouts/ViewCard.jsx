@@ -36,13 +36,13 @@ const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImag
       <div className="d-flex justify-content-center">
         <ButtonGroup>
           <Button
-            onClick={() => { putCross(id) }}
+            onClick={() => { putCross(id, false) }}
             variant="outline-danger"
             className="btn-lg mr-3 text-center"
             style={{ borderRadius: `${50}%` }}
           >❌</Button>
           <Button
-            onClick={() => { putLike(id) }}
+            onClick={() => { putLike(id, true) }}
             variant="outline-success"
             className="btn-lg ml-3 text-center"
             style={{ borderRadius: `${50}%` }}
