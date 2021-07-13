@@ -28,7 +28,7 @@ class MySideBar extends React.Component {
       <>
         <Link to="/my/profile">
           <div className="sidebar-header d-flex align-items-center">
-            <img className="w-25 mr-2" src={currentUser?.UserImages?.[0]?.image || 'https://via.placeholder.com/50x50.png'} alt="" style={{ borderRadius: `${50}%` }} alt="" style={{ borderRadius: `${50}%` }} alt="" style={{ borderRadius: `${50}%` }} />
+            <img className="w-25 mr-2" src={currentUser?.UserImages?.[0]?.image || 'https://via.placeholder.com/50x50.png'} alt="" style={{ borderRadius: `${50}%` }} />
             <h3 className="mb-0">My Profile</h3>
           </div>
         </Link>
@@ -75,7 +75,7 @@ class MySideBar extends React.Component {
     return (
       <>
         <div className="sidebar-header d-flex align-items-center">
-          <img className="w-25 mr-2" src={currentUser?.UserImages?.[0]?.image || 'https://via.placeholder.com/50x50.png'} alt="" style={{ borderRadius: `${50}%` }} alt="" style={{ borderRadius: `${50}%` }} />
+          <img className="w-25 mr-2" src={currentUser?.UserImages?.[0]?.image || 'https://via.placeholder.com/50x50.png'} alt="" style={{ borderRadius: `${50}%` }} />
           <h3 className="mb-0">My Profile</h3>
           <Link className="h-100 ml-auto" to="/my">
             <Button variant="warning" type="button">

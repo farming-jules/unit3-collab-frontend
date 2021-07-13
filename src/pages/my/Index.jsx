@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import {
-  getRecommendations, resetRecommendations,
-  destroyRecommendation, removeRecommendation
+  getRecommendations, resetRecommendations
 } from '@/actions/my/recommendation'
 
 import {
@@ -69,7 +68,6 @@ PagesMyIndex.propTypes = {
   stateRecommendations: PropTypes.shape().isRequired,
   getRecommendations: PropTypes.func.isRequired,
   resetRecommendations: PropTypes.func.isRequired,
-  removeRecommendation: PropTypes.func.isRequired,
   createLike: PropTypes.func.isRequired
 }
 
@@ -80,7 +78,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getRecommendations,
   resetRecommendations,
-  removeRecommendation,
   createLike
 }
 

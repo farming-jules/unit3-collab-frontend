@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Card, Carousel, Button, ButtonGroup, Badge } from 'react-bootstrap'
 import moment from 'moment'
 
-const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImages }, createLike, putCross }) => (
+const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImages }, createLike }) => (
   <Card style={{ width: '24rem', border: '1px solid black' }}>
     <Carousel>
       <Carousel.Item style={{ height: '500px' }}>
