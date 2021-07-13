@@ -8,9 +8,6 @@ export const setRecommendations = (payload) => ({ type: SET_RECOMMENDATIONS, pay
 export const UNSET_RECOMMENDATIONS = 'UNSET_RECOMMENDATIONS'
 export const unsetRecommendations = () => ({ type: UNSET_RECOMMENDATIONS })
 
-export const REMOVE_RECOMMENDATION_IN_RECOMMENDATIONS = 'REMOVE_RECOMMENDATION_IN_RECOMMENDATIONS'
-export const removeRecommendationInRecommendations = (payload) => ({ type: REMOVE_RECOMMENDATION_IN_RECOMMENDATIONS, payload })
-
 export const GET_RECOMMENDATIONS = 'GET_RECOMMENDATIONS'
 export const getRecommendations = () => (dispatch) => {
   dispatch(loading(GET_RECOMMENDATIONS, { loading: true }))
@@ -25,23 +22,9 @@ export const getRecommendations = () => (dispatch) => {
   })
 }
 
-export const DESTROY_RECOMMENDATION = 'DESTROY_RECOMMENDATION'
-export const destroyRecommendation = (RecommendationId) => (dispatch) => new Promise((resolve, reject) => {
-  dispatch(loading(DESTROY_RECOMMENDATION, { loading: true, id: RecommendationId }))
-  axios({
-    method: 'DELETE',
-    url: `https://localhost:3000/api/my/recommendations/${RecommendationId}`,
-    withCredentials: true
-  }).then((resp) => {
-    dispatch(removeRecommendationInRecommendations(RecommendationId))
-    resolve(resp)
-  }).catch((err) => {
-    reject(err)
-  }).finally(() => {
-    dispatch(loading(DESTROY_RECOMMENDATION, { loading: false, id: RecommendationId }))
-  })
-})
-
 export const resetRecommendations = () => (dispatch) => {
   dispatch(unsetRecommendations())
 }
+
+export const REMOVE_RECOMMENDATION = 'REMOVE_RECOMMENDATION'
+export const removeRecommendation = (payload) => ({ type: REMOVE_RECOMMENDATION, payload })

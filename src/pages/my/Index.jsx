@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 
 import {
   getRecommendations, resetRecommendations,
-  destroyRecommendation
+  destroyRecommendation, removeRecommendation
 } from '@/actions/my/recommendation'
 
 import {
-  updateRecommendation
-} from '@/actions/my/PutLike'
+  createLike
+} from '@/actions/my/createLike'
 
 import Loading from '@/components/Loading'
 import ViewCard from '@/layouts/ViewCard'
@@ -18,8 +18,7 @@ class PagesMyIndex extends React.Component {
   constructor(props) {
     super(props)
 
-    this.handlePutLikeSubmit = this.handlePutLikeSubmit.bind(this)
-    this.handlePutCrossSubmit = this.handlePutCrossSubmit.bind(this)
+    this.handlecreateLikeSubmit = this.handlecreateLikeSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -30,14 +29,8 @@ class PagesMyIndex extends React.Component {
     this.props.resetRecommendations()
   }
 
-  handlePutLikeSubmit(id, like) {
-    console.log(id)
-    this.props.updateRecommendation(id)
-  }
-
-  handlePutCrossSubmit(id) {
-    console.log(id)
-    this.props.destroyRecommendation(id)
+  handlecreateLikeSubmit(id, like) {
+    this.props.createLike(id, like)
   }
 
   renderIndex() {
@@ -51,8 +44,7 @@ class PagesMyIndex extends React.Component {
       <div key={recommendation.id} className="d-flex justify-content-center">
         <ViewCard
           information={recommendation}
-          putLike={this.handlePutLikeSubmit}
-          putCross={this.handlePutCrossSubmit}
+          createLike={this.handlecreateLikeSubmit}
         />
       </div>
     )
@@ -77,8 +69,8 @@ PagesMyIndex.propTypes = {
   stateRecommendations: PropTypes.shape().isRequired,
   getRecommendations: PropTypes.func.isRequired,
   resetRecommendations: PropTypes.func.isRequired,
-  destroyRecommendation: PropTypes.func.isRequired,
-  updateRecommendation: PropTypes.func.isRequired
+  removeRecommendation: PropTypes.func.isRequired,
+  createLike: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -88,8 +80,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getRecommendations,
   resetRecommendations,
-  destroyRecommendation,
-  updateRecommendation
+  removeRecommendation,
+  createLike
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PagesMyIndex)
