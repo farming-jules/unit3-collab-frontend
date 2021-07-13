@@ -7,6 +7,14 @@ import {
 } from '@/actions/my/recommendation'
 
 import {
+  getMatches, resetMatches
+} from '@/actions/my/Matches'
+
+import {
+  getLikes, resetLikes
+} from '@/actions/my/Likes'
+
+import {
   createLike
 } from '@/actions/my/createLike'
 
@@ -22,10 +30,14 @@ class PagesMyIndex extends React.Component {
 
   componentDidMount() {
     this.props.getRecommendations()
+    this.props.getMatches()
+    this.props.getLikes()
   }
 
   componentWillUnmount() {
     this.props.resetRecommendations()
+    this.props.resetMatches()
+    this.props.resetLikes()
   }
 
   handlecreateLikeSubmit(id, like) {
@@ -68,6 +80,10 @@ PagesMyIndex.propTypes = {
   stateRecommendations: PropTypes.shape().isRequired,
   getRecommendations: PropTypes.func.isRequired,
   resetRecommendations: PropTypes.func.isRequired,
+  getMatches: PropTypes.func.isRequired,
+  resetMatches: PropTypes.func.isRequired,
+  getLikes: PropTypes.func.isRequired,
+  resetLikes: PropTypes.func.isRequired,
   createLike: PropTypes.func.isRequired
 }
 
@@ -78,6 +94,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getRecommendations,
   resetRecommendations,
+  getMatches,
+  resetMatches,
+  getLikes,
+  resetLikes,
   createLike
 }
 
