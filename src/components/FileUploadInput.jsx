@@ -15,12 +15,12 @@ class CompsFileUploadInput extends React.Component {
   }
 
   handleChange(e) {
-    const { id, uploadFile } = this.props
+    const { id, uploadFile, existingEntry } = this.props
 
     const reader = new FileReader()
     const file = e?.target?.files?.[0]
 
-    uploadFile(id, file)
+    uploadFile(id, file, existingEntry?.id)
 
     reader.onload = this.handleReaderOnload
     reader.readAsDataURL(file)

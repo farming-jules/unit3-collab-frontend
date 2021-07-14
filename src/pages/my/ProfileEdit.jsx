@@ -10,6 +10,12 @@ import {
   updateMyProfile
 } from '@/actions/my/profile'
 
+import {
+  updateMyProfileImage,
+  createMyProfileImage,
+  destroyMyProfileImage
+} from '@/actions/my/profileImage'
+
 class PagesProfileEdit extends React.Component {
   constructor(props) {
     super(props)
@@ -29,11 +35,18 @@ class PagesProfileEdit extends React.Component {
     })
   }
 
-  handleUploadFile(id, file) {
+  handleUploadFile(id, file, UserImageId) {
     this.setImageLoading(id)
-    // this.props.updateMyProfileImage(file).finally(() => {
-    //   this.unsetImageLoading(id)
-    // })
+
+    if (UserImageId) {
+      this.props.updateMyProfileImage(file, UserImageId).then(() => {
+        this.unsetImageLoading(id)
+      })
+    } else {
+      this.props.createMyProfileImage(file).then(() => {
+        this.unsetImageLoading(id)
+      })
+    }
   }
 
   setImageLoading(id) {
@@ -72,7 +85,7 @@ class PagesProfileEdit extends React.Component {
             <div className="row">
               <CompsFileUploadInput
                 id="file-upload-1"
-                className="col-6 col-md-4 p-0"
+                className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[0] || {}}
                 uploadFile={this.handleUploadFile}
                 isUploading={imageLoading.includes('file-upload-1')}
@@ -80,7 +93,7 @@ class PagesProfileEdit extends React.Component {
 
               <CompsFileUploadInput
                 id="file-upload-2"
-                className="col-6 col-md-4 p-0"
+                className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[1] || {}}
                 uploadFile={this.handleUploadFile}
                 isUploading={imageLoading.includes('file-upload-2')}
@@ -88,7 +101,7 @@ class PagesProfileEdit extends React.Component {
 
               <CompsFileUploadInput
                 id="file-upload-3"
-                className="col-6 col-md-4 p-0"
+                className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[2] || {}}
                 uploadFile={this.handleUploadFile}
                 isUploading={imageLoading.includes('file-upload-3')}
@@ -96,7 +109,7 @@ class PagesProfileEdit extends React.Component {
 
               <CompsFileUploadInput
                 id="file-upload-4"
-                className="col-6 col-md-4 p-0"
+                className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[3] || {}}
                 uploadFile={this.handleUploadFile}
                 isUploading={imageLoading.includes('file-upload-4')}
@@ -104,7 +117,7 @@ class PagesProfileEdit extends React.Component {
 
               <CompsFileUploadInput
                 id="file-upload-5"
-                className="col-6 col-md-4 p-0"
+                className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[4] || {}}
                 uploadFile={this.handleUploadFile}
                 isUploading={imageLoading.includes('file-upload-5')}
@@ -112,7 +125,7 @@ class PagesProfileEdit extends React.Component {
 
               <CompsFileUploadInput
                 id="file-upload-6"
-                className="col-6 col-md-4 p-0"
+                className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[5] || {}}
                 uploadFile={this.handleUploadFile}
                 isUploading={imageLoading.includes('file-upload-6')}
@@ -129,7 +142,10 @@ class PagesProfileEdit extends React.Component {
 PagesProfileEdit.propTypes = {
   history: PropTypes.shape().isRequired,
   updateMyProfile: PropTypes.func.isRequired,
-  stateCurrentUser: PropTypes.shape().isRequired
+  stateCurrentUser: PropTypes.shape().isRequired,
+  updateMyProfileImage: PropTypes.func.isRequired,
+  createMyProfileImage: PropTypes.func.isRequired,
+  destroyMyProfileImage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -137,7 +153,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  updateMyProfile
+  updateMyProfile,
+  updateMyProfileImage,
+  createMyProfileImage,
+  destroyMyProfileImage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PagesProfileEdit)

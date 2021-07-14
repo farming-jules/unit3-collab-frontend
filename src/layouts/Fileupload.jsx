@@ -6,11 +6,13 @@ import { API_URL } from './config'
 import './App.css'
 
 export default class App extends Component {
-  state = {
-    uploading: false,
-    UserImages: [
-      {}
-    ]
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      uploading: false,
+      UserImages: [{}]
+    }
   }
 
   onChange = (e) => {
