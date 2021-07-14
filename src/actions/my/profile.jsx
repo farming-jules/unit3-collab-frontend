@@ -42,3 +42,16 @@ export const updateMyProfile = (values) => (dispatch) => new Promise((resolve, r
     reject(err)
   })
 })
+
+export const deleteMyProfile = () => (dispatch) => new Promise((resolve, reject) => {
+  axios({
+    method: 'DELETE',
+    url: 'http://localhost:3000/api/my/profile',
+    withCredentials: true
+  }).then((resp) => {
+    dispatch(unsetCurrentUser(resp.data))
+    resolve(resp)
+  }).catch((err) => {
+    reject(err)
+  })
+})
