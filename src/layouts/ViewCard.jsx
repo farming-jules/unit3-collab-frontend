@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Card, Carousel, Button, ButtonGroup, Badge } from 'react-bootstrap'
 import moment from 'moment'
 
-const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImages }, putLike, putCross }) => (
+const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImages }, createLike }) => (
   <Card style={{ width: '24rem', border: '1px solid black' }}>
     <Carousel>
       <Carousel.Item style={{ height: '500px' }}>
@@ -36,13 +36,13 @@ const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImag
       <div className="d-flex justify-content-center">
         <ButtonGroup>
           <Button
-            onClick={() => { putCross(id, false) }}
+            onClick={() => { createLike(id, false) }}
             variant="outline-danger"
             className="btn-lg mr-3 text-center"
             style={{ borderRadius: `${50}%` }}
           >❌</Button>
           <Button
-            onClick={() => { putLike(id, true) }}
+            onClick={() => { createLike(id, true) }}
             variant="outline-success"
             className="btn-lg ml-3 text-center"
             style={{ borderRadius: `${50}%` }}
@@ -55,8 +55,7 @@ const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImag
 
 ViewCard.propTypes = {
   information: PropTypes.shape().isRequired,
-  putLike: PropTypes.func.isRequired,
-  putCross: PropTypes.func.isRequired
+  createLike: PropTypes.func.isRequired
 }
 
 export default ViewCard

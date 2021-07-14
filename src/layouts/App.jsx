@@ -9,6 +9,7 @@ import { getMyProfile } from '@/actions/my/profile'
 
 import Loading from '@/components/Loading'
 import PrivateRoute from '@/components/PrivateRoute'
+import AuthRoute from '@/components/AuthRoute'
 
 import LayoutsNavbar from '@/layouts/Navbar'
 import MySideBar from '@/layouts/MySideBar'
@@ -69,8 +70,8 @@ class App extends React.Component {
                 <Route exact path="/" component={PagesHome} />
 
                 <Route path="/auth">
-                  <Route exact path="/auth/signup" component={PagesAuthSignup} />
-                  <Route exact path="/auth/login" component={PagesAuthLogin} />
+                  <AuthRoute exact path="/auth/signup" component={PagesAuthSignup} />
+                  <AuthRoute exact path="/auth/login" component={PagesAuthLogin} />
                 </Route>
 
                 <PrivateRoute exact path="/test-private" component={PagesPrivate} />

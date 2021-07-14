@@ -6,6 +6,15 @@ export const setCurrentUser = (payload) => ({ type: SET_CURRENT_USER, payload })
 export const UNSET_CURRENT_USER = 'UNSET_CURRENT_USER'
 export const unsetCurrentUser = () => ({ type: UNSET_CURRENT_USER })
 
+export const ADD_USER_IMAGE_FROM_USER = 'ADD_USER_IMAGE_FROM_USER'
+export const addUserImageFromUser = (payload) => ({ type: ADD_USER_IMAGE_FROM_USER, payload })
+
+export const EDIT_USER_IMAGE_FROM_USER = 'EDIT_USER_IMAGE_FROM_USER'
+export const editUserImageFromUser = (payload) => ({ type: EDIT_USER_IMAGE_FROM_USER, payload })
+
+export const DELETE_USER_IMAGE_FROM_USER = 'DELETE_USER_IMAGE_FROM_USER'
+export const deleteUserImageFromUser = (payload) => ({ type: DELETE_USER_IMAGE_FROM_USER, payload })
+
 export const getMyProfile = () => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'GET',

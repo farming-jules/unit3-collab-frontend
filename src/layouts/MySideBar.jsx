@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
-import MatchCard from '@/layouts/MatchCard'
+import MiniCard from '@/layouts/MiniCard'
 
 import FormsMyProfileShow from '@/forms/my/ProfileShow'
 
 import { Button, Tabs, Tab, ListGroup } from 'react-bootstrap'
+
+import Loading from '@/components/Loading'
 
 class MySideBar extends React.Component {
   constructor(props) {
@@ -20,40 +22,70 @@ class MySideBar extends React.Component {
   }
 
   renderMatch() {
-    const { location: { pathname }, stateCurrentUser: { currentUser } } = this.props
+    const { location: { pathname }, stateCurrentUser: { currentUser }, stateMatches: { matches, isGetMatchesLoading }, stateLikes: { likes, isGetLikesLoading } } = this.props
 
     if (pathname !== '/my') return null
+    if (isGetMatchesLoading) return <Loading />
+    if (isGetLikesLoading) return <Loading />
 
     return (
       <>
         <Link to="/my/profile">
           <div className="sidebar-header d-flex align-items-center">
-            <img className="w-25 mr-2" src={currentUser?.UserImages?.[0]?.image || 'https://via.placeholder.com/50x50.png'} alt="" style={{ borderRadius: `${50}%` }} alt="" style={{ borderRadius: `${50}%` }} alt="" style={{ borderRadius: `${50}%` }} />
+            <img className="w-25 mr-2" src={currentUser?.UserImages?.[0]?.image || 'https://via.placeholder.com/50x50.png'} alt="" style={{ borderRadius: `${50}%` }} />
             <h3 className="mb-0">My Profile</h3>
           </div>
         </Link>
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+        <Tabs defaultActiveKey="Matches" id="uncontrolled-tab-example">
           <Tab eventKey="Matches" title="Matches">
-            <div className="row ml-0 mr-0">
-              <MatchCard />
-              <MatchCard />
-              <MatchCard />
-              <MatchCard />
-              <MatchCard />
-              <MatchCard />
-              <MatchCard />
-            </div>
-          </Tab>
-          <Tab eventKey="Messages" title="Messages">
-            <ListGroup>
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-              <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup>
+            {
+              matches.length !== 0 ? (
+                <>
+                  <div className="row ml-0 mr-0">
+                    {
+                      matches.map((item) => (
+                        <MiniCard
+                          key={item.id}
+                          information={item}
+                        />
+                      ))
+                    }
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="row ml-0 mr-0">
+                    <h2>No Matches</h2>
+                  </div>
+                </>
+              )
+            }
           </Tab>
           <Tab eventKey="Likes" title="Likes">
+            {
+              likes.length !== 0 ? (
+                <>
+                  <div className="row ml-0 mr-0">
+                    {
+                      likes.map((item) => (
+                        <MiniCard
+                          key={item.id}
+                          information={item}
+                        />
+                      ))
+                    }
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="row ml-0 mr-0">
+                    <h2>No Matches</h2>
+                  </div>
+                </>
+              )
+            }
+          </Tab>
+          <Tab eventKey="Messages" title="Messages">
             <ListGroup>
               <ListGroup.Item>Cras justo odio</ListGroup.Item>
               <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
@@ -75,7 +107,7 @@ class MySideBar extends React.Component {
     return (
       <>
         <div className="sidebar-header d-flex align-items-center">
-          <img className="w-25 mr-2" src={currentUser?.UserImages?.[0]?.image || 'https://via.placeholder.com/50x50.png'} alt="" style={{ borderRadius: `${50}%` }} alt="" style={{ borderRadius: `${50}%` }} />
+          <img className="w-25 mr-2" src={currentUser?.UserImages?.[0]?.image || 'https://via.placeholder.com/50x50.png'} alt="" style={{ borderRadius: `${50}%` }} />
           <h3 className="mb-0">My Profile</h3>
           <Link className="h-100 ml-auto" to="/my">
             <Button variant="warning" type="button">
@@ -136,11 +168,15 @@ class MySideBar extends React.Component {
 
 MySideBar.propTypes = {
   location: PropTypes.shape().isRequired,
-  stateCurrentUser: PropTypes.shape().isRequired
+  stateCurrentUser: PropTypes.shape().isRequired,
+  stateMatches: PropTypes.shape().isRequired,
+  stateLikes: PropTypes.shape().isRequired
 }
 
 const mapStateToProps = (state) => ({
-  stateCurrentUser: state.currentUser
+  stateCurrentUser: state.currentUser,
+  stateMatches: state.matches,
+  stateLikes: state.likes
 })
 
 export default connect(mapStateToProps, null)(withRouter(MySideBar))
