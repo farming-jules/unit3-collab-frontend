@@ -5,7 +5,7 @@ import {
   UNSET_MATCHES,
   GET_MATCHES,
   REMOVE_MATCH
-} from '@/actions/my/Matches'
+} from '@/actions/my/matches'
 
 const initialState = {
   matches: [],

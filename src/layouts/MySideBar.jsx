@@ -122,20 +122,15 @@ class MySideBar extends React.Component {
               initialValues={currentUser}
             />
           </div>
+        </div>
+        <div className="d-flex justify-content-between m-3">
           <Link className="align-self-center" to="/my/profile/edit">
-            <Button variant="warning" type="button">
+            <Button variant="primary" type="button">
               Edit Info
             </Button>
           </Link>
-        </div>
-        <div className="d-flex justify-content-between m-3">
           <Link className="align-self-center" to="">
-            <Button variant="warning" type="button">
-              Logout
-            </Button>
-          </Link>
-          <Link className="align-self-center" to="">
-            <Button variant="warning" type="button">
+            <Button variant="dark" type="button">
               Delete Account
             </Button>
           </Link>
