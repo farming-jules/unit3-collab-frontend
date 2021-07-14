@@ -18,15 +18,40 @@ const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImag
         <img
           style={{ objectFit: 'cover' }}
           className="d-block w-100 h-100"
-          src={UserImages && UserImages[0] && UserImages[0].image ? (UserImages[0].image) : ('https://via.placeholder.com/50x75.png')}
+          src={UserImages && UserImages[1] && UserImages[0].image ? (UserImages[1].image) : ('https://via.placeholder.com/50x75.png')}
           alt="Second slide"
         />
-      </Carousel.Item>      <Carousel.Item style={{ height: '500px' }}>
+      </Carousel.Item>
+      <Carousel.Item style={{ height: '500px' }}>
         <img
           style={{ objectFit: 'cover' }}
           className="d-block w-100 h-100"
-          src={UserImages?.[0]?.image || 'https://via.placeholder.com/50x75.png'}
+          src={UserImages?.[2]?.image || 'https://via.placeholder.com/50x75.png'}
           alt="Third slide"
+        />
+      </Carousel.Item>
+      <Carousel.Item style={{ height: '500px' }}>
+        <img
+          style={{ objectFit: 'cover' }}
+          className="d-block w-100 h-100"
+          src={UserImages?.[3]?.image || 'https://via.placeholder.com/50x75.png'}
+          alt="Fourth slide"
+        />
+      </Carousel.Item>
+      <Carousel.Item style={{ height: '500px' }}>
+        <img
+          style={{ objectFit: 'cover' }}
+          className="d-block w-100 h-100"
+          src={UserImages?.[4]?.image || 'https://via.placeholder.com/50x75.png'}
+          alt="Fifth slide"
+        />
+      </Carousel.Item>
+      <Carousel.Item style={{ height: '500px' }}>
+        <img
+          style={{ objectFit: 'cover' }}
+          className="d-block w-100 h-100"
+          src={UserImages?.[5]?.image || 'https://via.placeholder.com/50x75.png'}
+          alt="Sixth slide"
         />
       </Carousel.Item>
     </Carousel>

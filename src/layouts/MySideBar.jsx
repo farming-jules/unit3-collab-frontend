@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
+import {
+  deleteMyProfile
+} from '@/actions/my/profile'
+
 import MiniCard from '@/layouts/MiniCard'
 
 import FormsMyProfileShow from '@/forms/my/ProfileShow'
@@ -19,6 +23,14 @@ class MySideBar extends React.Component {
     this.state = {
       active: true
     }
+    this.handleProfileDeleteSubmit = this.handleProfileDeleteSubmit.bind(this)
+  }
+
+  handleProfileDeleteSubmit(values) {
+    this.props.deleteMyProfile(values).then(() => {
+      const { history: { push } } = this.props
+      push('/')
+    })
   }
 
   renderMatch() {
@@ -135,7 +147,7 @@ class MySideBar extends React.Component {
             </Button>
           </Link>
           <Link className="align-self-center" to="">
-            <Button variant="warning" type="button">
+            <Button variant="warning" type="button" onClick={this.handleProfileDeleteSubmit}>
               Delete Account
             </Button>
           </Link>
@@ -167,10 +179,12 @@ class MySideBar extends React.Component {
 }
 
 MySideBar.propTypes = {
+  history: PropTypes.shape().isRequired,
   location: PropTypes.shape().isRequired,
   stateCurrentUser: PropTypes.shape().isRequired,
   stateMatches: PropTypes.shape().isRequired,
-  stateLikes: PropTypes.shape().isRequired
+  stateLikes: PropTypes.shape().isRequired,
+  deleteMyProfile: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -179,4 +193,8 @@ const mapStateToProps = (state) => ({
   stateLikes: state.likes
 })
 
-export default connect(mapStateToProps, null)(withRouter(MySideBar))
+const mapDispatchToProps = {
+  deleteMyProfile
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MySideBar))

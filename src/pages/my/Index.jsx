@@ -8,7 +8,7 @@ import {
 
 import {
   getMatches, resetMatches
-} from '@/actions/my/Matches'
+} from '@/actions/my/matches'
 
 import {
   getLikes, resetLikes
