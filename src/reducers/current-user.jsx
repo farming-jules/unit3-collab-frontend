@@ -30,14 +30,14 @@ export default (state = initialState, action) => {
     }
     case EDIT_USER_IMAGE_FROM_USER: {
       return produce(state, (draft) => {
-        const index = draft.UserImages.findIndex((image) => image.id === action.payload.id)
-        if (index !== -1) draft.UserImages[index] = action.payload
+        const index = draft.currentUser.UserImages.findIndex((image) => image.id === action.payload.id)
+        if (index !== -1) draft.currentUser.UserImages[index] = action.payload
       })
     }
     case DELETE_USER_IMAGE_FROM_USER: {
       return produce(state, (draft) => {
-        const index = draft.UserImages.findIndex((image) => image.id === action.payload.id)
-        if (index !== -1) draft.UserImages.splice(index, 1)
+        const index = draft.currentUser.UserImages.findIndex((image) => image.id === action.payload.id)
+        if (index !== -1) draft.currentUser.UserImages.splice(index, 1)
       })
     }
     default: {

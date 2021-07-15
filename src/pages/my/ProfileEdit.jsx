@@ -26,6 +26,7 @@ class PagesProfileEdit extends React.Component {
 
     this.handleProfileEditSubmit = this.handleProfileEditSubmit.bind(this)
     this.handleUploadFile = this.handleUploadFile.bind(this)
+    this.handleRemoveFile = this.handleRemoveFile.bind(this)
   }
 
   handleProfileEditSubmit(values) {
@@ -49,6 +50,14 @@ class PagesProfileEdit extends React.Component {
     }
   }
 
+  handleRemoveFile(id, UserImageId) {
+    this.setImageLoading(id)
+
+    this.props.destroyMyProfileImage(UserImageId).then(() => {
+      this.unsetImageLoading(id)
+    })
+  }
+
   setImageLoading(id) {
     const newState = produce(this.state, (draft) => {
       draft.imageLoading.push(id)
@@ -67,6 +76,8 @@ class PagesProfileEdit extends React.Component {
   render() {
     const { imageLoading } = this.state
     const { stateCurrentUser: { currentUser } } = this.props
+
+    const disableDelete = imageLoading.length > 0
 
     return (
       <div id="pages-profile-edit" className="container text-center my-3">
@@ -88,7 +99,9 @@ class PagesProfileEdit extends React.Component {
                 className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[0] || {}}
                 uploadFile={this.handleUploadFile}
+                removeFile={this.handleRemoveFile}
                 isUploading={imageLoading.includes('file-upload-1')}
+                disableDelete={disableDelete}
               />
 
               <CompsFileUploadInput
@@ -96,7 +109,9 @@ class PagesProfileEdit extends React.Component {
                 className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[1] || {}}
                 uploadFile={this.handleUploadFile}
+                removeFile={this.handleRemoveFile}
                 isUploading={imageLoading.includes('file-upload-2')}
+                disableDelete={disableDelete}
               />
 
               <CompsFileUploadInput
@@ -104,7 +119,9 @@ class PagesProfileEdit extends React.Component {
                 className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[2] || {}}
                 uploadFile={this.handleUploadFile}
+                removeFile={this.handleRemoveFile}
                 isUploading={imageLoading.includes('file-upload-3')}
+                disableDelete={disableDelete}
               />
 
               <CompsFileUploadInput
@@ -112,7 +129,9 @@ class PagesProfileEdit extends React.Component {
                 className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[3] || {}}
                 uploadFile={this.handleUploadFile}
+                removeFile={this.handleRemoveFile}
                 isUploading={imageLoading.includes('file-upload-4')}
+                disableDelete={disableDelete}
               />
 
               <CompsFileUploadInput
@@ -120,7 +139,9 @@ class PagesProfileEdit extends React.Component {
                 className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[4] || {}}
                 uploadFile={this.handleUploadFile}
+                removeFile={this.handleRemoveFile}
                 isUploading={imageLoading.includes('file-upload-5')}
+                disableDelete={disableDelete}
               />
 
               <CompsFileUploadInput
@@ -128,7 +149,9 @@ class PagesProfileEdit extends React.Component {
                 className="col-6 col-md-4 p-0 border-dark"
                 existingEntry={currentUser?.UserImages?.[5] || {}}
                 uploadFile={this.handleUploadFile}
+                removeFile={this.handleRemoveFile}
                 isUploading={imageLoading.includes('file-upload-6')}
+                disableDelete={disableDelete}
               />
 
             </div>
@@ -144,8 +167,8 @@ PagesProfileEdit.propTypes = {
   updateMyProfile: PropTypes.func.isRequired,
   stateCurrentUser: PropTypes.shape().isRequired,
   updateMyProfileImage: PropTypes.func.isRequired,
-  createMyProfileImage: PropTypes.func.isRequired
-  // destroyMyProfileImage: PropTypes.func.isRequired
+  createMyProfileImage: PropTypes.func.isRequired,
+  destroyMyProfileImage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
