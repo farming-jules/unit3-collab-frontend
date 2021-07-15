@@ -144,8 +144,8 @@ PagesProfileEdit.propTypes = {
   updateMyProfile: PropTypes.func.isRequired,
   stateCurrentUser: PropTypes.shape().isRequired,
   updateMyProfileImage: PropTypes.func.isRequired,
-  createMyProfileImage: PropTypes.func.isRequired,
-  destroyMyProfileImage: PropTypes.func.isRequired
+  createMyProfileImage: PropTypes.func.isRequired
+  // destroyMyProfileImage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({

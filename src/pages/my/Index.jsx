@@ -25,7 +25,7 @@ class PagesMyIndex extends React.Component {
   constructor(props) {
     super(props)
 
-    this.handlecreateLikeSubmit = this.handlecreateLikeSubmit.bind(this)
+    this.handleCreateLikeSubmit = this.handleCreateLikeSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class PagesMyIndex extends React.Component {
     this.props.resetLikes()
   }
 
-  handlecreateLikeSubmit(id, like) {
+  handleCreateLikeSubmit(id, like) {
     this.props.createLike(id, like)
   }
 
@@ -55,7 +55,8 @@ class PagesMyIndex extends React.Component {
       <div key={recommendation.id} className="d-flex justify-content-center">
         <ViewCard
           information={recommendation}
-          createLike={this.handlecreateLikeSubmit}
+          createLike={this.handleCreateLikeSubmit}
+          isRecommendation
         />
       </div>
     )
@@ -63,7 +64,7 @@ class PagesMyIndex extends React.Component {
 
   render() {
     return (
-      <div id="pages-recommendations-index" className="container text-center my-3">
+      <div id="pages-my-index" className="container text-center my-3">
         <h1 className="mb-3">Index/Main Page</h1>
         <div
           className="d-flex flex-column flex-grow-1 h-100"

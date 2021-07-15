@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Card, Carousel, Button, ButtonGroup, Badge } from 'react-bootstrap'
 import moment from 'moment'
 
-const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImages }, createLike }) => (
+const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImages }, createLike, isRecommendation }) => (
   <Card style={{ width: '24rem', border: '1px solid black' }}>
     <Carousel>
       <Carousel.Item style={{ height: '500px' }}>
@@ -58,29 +58,34 @@ const ViewCard = ({ information: { id, name, dateOfBirth, bio, passion, UserImag
     <Card.Body className="text-left">
       <Card.Title><b>{name}</b> {moment().diff(dateOfBirth, 'years')}</Card.Title>
       <Card.Text><Badge pill variant="success">{passion}</Badge> {bio}</Card.Text>
-      <div className="d-flex justify-content-center">
-        <ButtonGroup>
-          <Button
-            onClick={() => { createLike(id, false) }}
-            variant="outline-danger"
-            className="btn-lg mr-3 text-center"
-            style={{ borderRadius: `${50}%` }}
-          >❌</Button>
-          <Button
-            onClick={() => { createLike(id, true) }}
-            variant="outline-success"
-            className="btn-lg ml-3 text-center"
-            style={{ borderRadius: `${50}%` }}
-          >💚</Button>
-        </ButtonGroup>
-      </div>
+      {
+          isRecommendation && (
+            <div className="d-flex justify-content-center">
+              <ButtonGroup>
+                <Button
+                  onClick={() => { createLike(id, false) }}
+                  variant="outline-danger"
+                  className="btn-lg mr-3 text-center"
+                  style={{ borderRadius: `${50}%` }}
+                >❌</Button>
+                <Button
+                  onClick={() => { createLike(id, true) }}
+                  variant="outline-success"
+                  className="btn-lg ml-3 text-center"
+                  style={{ borderRadius: `${50}%` }}
+                >💚</Button>
+              </ButtonGroup>
+            </div>
+          )
+        }
     </Card.Body>
   </Card>
 )
 
 ViewCard.propTypes = {
   information: PropTypes.shape().isRequired,
-  createLike: PropTypes.func.isRequired
+  createLike: PropTypes.func.isRequired,
+  isRecommendation: PropTypes.bool.isRequired
 }
 
 export default ViewCard

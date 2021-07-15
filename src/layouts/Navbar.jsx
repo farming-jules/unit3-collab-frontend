@@ -23,19 +23,19 @@ class LayoutsNavbar extends React.Component {
 
     return (
       <Navbar id="layouts-navbar" bg="dark" variant="dark" expand="lg" collapseOnSelect>
-        <Navbar.Brand>Tinder</Navbar.Brand>
+        <Navbar.Brand as={NavLink} to="/">Tinder</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
             {
               currentUser ? (
                 <>
-                  <Nav.Link eventKey="B" onClick={this.handleLogoutClick}>Logout</Nav.Link>
+                  <Nav.Link as={NavLink} to="/" eventKey="A" onClick={this.handleLogoutClick}>Logout</Nav.Link>
                 </>
               ) : (
                 <>
-                  <Nav.Link as={NavLink} to="/auth/signup" eventKey="A">Signup</Nav.Link>
-                  <Nav.Link as={NavLink} to="/auth/login" eventKey="B">Login</Nav.Link>
+                  <Nav.Link as={NavLink} to="/auth/signup" eventKey="B">Signup</Nav.Link>
+                  <Nav.Link as={NavLink} to="/auth/login" eventKey="C">Login</Nav.Link>
                 </>
               )
             }
