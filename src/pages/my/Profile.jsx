@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { Card, CardGroup } from 'react-bootstrap'
 import CompsFileUploadInput from '@/components/FileUploadInput'
 
-
 import ViewCard from '@/layouts/ViewCard'
 
 class PagesProfileShow extends React.Component {
