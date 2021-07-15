@@ -56,6 +56,7 @@ class PagesMyIndex extends React.Component {
         <ViewCard
           information={recommendation}
           createLike={this.handlecreateLikeSubmit}
+          isRecommendation
         />
       </div>
     )

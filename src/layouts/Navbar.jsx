@@ -30,7 +30,7 @@ class LayoutsNavbar extends React.Component {
             {
               currentUser ? (
                 <>
-                  <Nav.Link eventKey="B" onClick={this.handleLogoutClick}>Logout</Nav.Link>
+                  <Nav.Link as={NavLink} to="/" eventKey="B" onClick={this.handleLogoutClick}>Logout</Nav.Link>
                 </>
               ) : (
                 <>
