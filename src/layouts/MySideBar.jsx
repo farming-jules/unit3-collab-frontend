@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
+import ViewCard from '@/layouts/ViewCard'
+
 import {
   deleteMyProfile
 } from '@/actions/my/profile'
@@ -140,6 +142,12 @@ class MySideBar extends React.Component {
         <div className="d-flex flex-column mt-3 ml-3 mr-3">
           <h3 className="text-center">Account Settings</h3>
           <div className="disable-select">
+            <div className="d-flex d-lg-none justify-content-center mt-3 mb-3">
+              <ViewCard
+                information={currentUser}
+                isRecommendation={false}
+              />
+            </div>
             <FormsMyProfileShow
               initialValues={currentUser}
             />

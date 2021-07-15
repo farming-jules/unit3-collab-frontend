@@ -60,7 +60,7 @@ class App extends React.Component {
         <LayoutsNavbar />
         {
           loaded ? (
-            <div className="d-flex">
+            <div className="d-flex flex-column justify-content-center align-items-center flex-lg-row">
               <MySideBar />
 
               <Switch>
