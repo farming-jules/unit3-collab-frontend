@@ -23,8 +23,6 @@ import PagesMyIndex from '@/pages/my/Index'
 import PagesProfileShow from '@/pages/my/Profile'
 import PagesProfileEdit from '@/pages/my/ProfileEdit'
 
-import PagesPrivate from '@/pages/Private'
-
 import PagesNotFound from '@/pages/NotFound'
 
 class App extends React.Component {
@@ -63,7 +61,6 @@ class App extends React.Component {
         {
           loaded ? (
             <div className="d-flex">
-
               <MySideBar />
 
               <Switch>
@@ -74,19 +71,11 @@ class App extends React.Component {
                   <AuthRoute exact path="/auth/login" component={PagesAuthLogin} />
                 </Route>
 
-                <PrivateRoute exact path="/test-private" component={PagesPrivate} />
-
                 <Route path="/my">
                   <PrivateRoute exact path="/my" component={PagesMyIndex} />
                   <PrivateRoute exact path="/my/profile" component={PagesProfileShow} />
                   <PrivateRoute exact path="/my/profile/edit" component={PagesProfileEdit} />
                 </Route>
-
-                {/* <Route path="/my">
-                  <Route exact path="/my" component={PagesMyIndex} />
-                  <Route exact path="/my/profile" component={PagesProfileShow} />
-                  <Route exact path="/my/profile/edit" component={PagesProfileEdit} />
-                </Route> */}
 
                 <Route component={PagesNotFound} />
               </Switch>

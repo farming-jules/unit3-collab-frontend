@@ -33,12 +33,50 @@ class MySideBar extends React.Component {
     })
   }
 
-  renderMatch() {
-    const { location: { pathname }, stateCurrentUser: { currentUser }, stateMatches: { matches, isGetMatchesLoading }, stateLikes: { likes, isGetLikesLoading } } = this.props
+  renderMatchesTab() {
+    const { stateMatches: { matches, isGetMatchesLoading } } = this.props
+
+    if (isGetMatchesLoading) return <Loading />
+    if (matches.length < 1) return <h2 className="text-center">No Matches</h2>
+
+    return (
+      <div className="row ml-0 mr-0">
+        {
+          matches.map((item) => (
+            <MiniCard
+              key={item.id}
+              information={item}
+            />
+          ))
+        }
+      </div>
+    )
+  }
+
+  renderLikesTab() {
+    const { stateLikes: { likes, isGetLikesLoading } } = this.props
+
+    if (isGetLikesLoading) return <Loading />
+    if (likes.length < 1) return <h2 className="text-center">No Likes</h2>
+
+    return (
+      <div className="row ml-0 mr-0">
+        {
+          likes.map((item) => (
+            <MiniCard
+              key={item.id}
+              information={item}
+            />
+          ))
+        }
+      </div>
+    )
+  }
+
+  renderMyRecommendationSidebar() {
+    const { location: { pathname }, stateCurrentUser: { currentUser } } = this.props
 
     if (pathname !== '/my') return null
-    if (isGetMatchesLoading) return <Loading />
-    if (isGetLikesLoading) return <Loading />
 
     return (
       <>
@@ -50,52 +88,10 @@ class MySideBar extends React.Component {
         </Link>
         <Tabs defaultActiveKey="Matches" id="uncontrolled-tab-example">
           <Tab eventKey="Matches" title="Matches">
-            {
-              matches.length !== 0 ? (
-                <>
-                  <div className="row ml-0 mr-0">
-                    {
-                      matches.map((item) => (
-                        <MiniCard
-                          key={item.id}
-                          information={item}
-                        />
-                      ))
-                    }
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="row ml-0 mr-0">
-                    <h2>No Matches</h2>
-                  </div>
-                </>
-              )
-            }
+            {this.renderMatchesTab()}
           </Tab>
           <Tab eventKey="Likes" title="Likes">
-            {
-              likes.length !== 0 ? (
-                <>
-                  <div className="row ml-0 mr-0">
-                    {
-                      likes.map((item) => (
-                        <MiniCard
-                          key={item.id}
-                          information={item}
-                        />
-                      ))
-                    }
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="row ml-0 mr-0">
-                    <h2>No Matches</h2>
-                  </div>
-                </>
-              )
-            }
+            {this.renderLikesTab()}
           </Tab>
           <Tab eventKey="Messages" title="Messages">
             <ListGroup>
@@ -111,7 +107,7 @@ class MySideBar extends React.Component {
     )
   }
 
-  renderProfile() {
+  renderMyProfileSidebar() {
     const { location: { pathname }, stateCurrentUser: { currentUser } } = this.props
 
     if (pathname !== '/my/profile') return null
@@ -151,22 +147,18 @@ class MySideBar extends React.Component {
     )
   }
 
-  renderSidebar() {
-    const { active } = this.state
-
-    return (
-      <div id="sidebar" className={active ? 'active' : null}>
-        {this.renderMatch()}
-        {this.renderProfile()}
-      </div>
-    )
-  }
-
   render = () => {
     const { location: { pathname } } = this.props
 
     if (pathname === '/my' || pathname === '/my/profile') {
-      return this.renderSidebar()
+      const { active } = this.state
+
+      return (
+        <div id="sidebar" className={active ? 'active' : null}>
+          {this.renderMyRecommendationSidebar()}
+          {this.renderMyProfileSidebar()}
+        </div>
+      )
     }
 
     return null
