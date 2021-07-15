@@ -5,31 +5,44 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const PagesHome = ({ stateCurrentUser: { currentUser } }) => (
-  <div id="pages-home" className="container-fluid">
-    <header className="text-center border-bottom">
-      <h1>Home Page</h1>
-    </header>
-    <div style={{ backgroundImage: 'url("https://c4.wallpaperflare.com/wallpaper/512/567/595/women-lesbians-blue-angel-strawberries-innuendo-phallic-symbol-open-mouth-sexy-wallpaper-preview.jpg")',
+  <div
+    id="pages-home"
+    className="container-fluid"
+    style={{
+      position: 'relative',
+      backgroundImage: 'url("https://tinder.com/static/build/07eef8b101ca939c978a599f508aa955.webp")',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: '100%' }}
-    >
-      <div className="d-flex justify-content-center align-items-center" style={{ height: `${80}vh` }}>
-        {
-          currentUser ? (
-            <Link to="/my">
-              <Button variant="warning" type="button">
-                Browse Recommendations
-              </Button>
-            </Link>
-          ) : (
-            <Link to="/auth/signup">
-              <Button variant="warning" type="button">
-                Create Account
-              </Button>
-            </Link>
-          )
-        }
-      </div>
+      backgroundSize: 'cover',
+      height: '100vh'
+    }}
+  >
+    <div
+      style={{
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'black',
+        opacity: '0.4'
+      }}
+    />
+    <div className="d-flex justify-content-center align-items-center" style={{ height: `${80}vh`, position: 'relative', zIndex: '99' }}>
+      {
+        currentUser ? (
+          <Link to="/my">
+            <Button variant="warning" type="button">
+              Browse Recommendations
+            </Button>
+          </Link>
+        ) : (
+          <Link to="/auth/signup">
+            <Button variant="warning" type="button">
+              Create Account
+            </Button>
+          </Link>
+        )
+      }
     </div>
   </div>
 )

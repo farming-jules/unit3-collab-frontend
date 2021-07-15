@@ -15,11 +15,12 @@ export const editUserImageFromUser = (payload) => ({ type: EDIT_USER_IMAGE_FROM_
 export const DELETE_USER_IMAGE_FROM_USER = 'DELETE_USER_IMAGE_FROM_USER'
 export const deleteUserImageFromUser = (payload) => ({ type: DELETE_USER_IMAGE_FROM_USER, payload })
 
-export const getMyProfile = () => (dispatch) => new Promise((resolve, reject) => {
+export const getMyProfile = (config = {}) => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'GET',
     url: 'http://localhost:3000/api/my/profile',
-    withCredentials: true
+    withCredentials: true,
+    hide401Toast: config.hide401Toast
   }).then((resp) => {
     dispatch(setCurrentUser(resp.data))
     resolve(resp)

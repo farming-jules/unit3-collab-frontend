@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getMyProfile().finally(() => {
+    this.props.getMyProfile({ hide401Toast: true }).finally(() => {
       this.setState({ loaded: true })
     })
   }

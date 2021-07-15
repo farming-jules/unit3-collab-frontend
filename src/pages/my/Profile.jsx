@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { Card, CardGroup } from 'react-bootstrap'
-import CompsFileUploadInput from '@/components/FileUploadInput'
 
 import ViewCard from '@/layouts/ViewCard'
 
@@ -24,41 +23,24 @@ const PagesMyProfileShow = ({ stateCurrentUser: { currentUser } }) => (
             <div className="ml-3" style={{ height: `${690}px`, width: `${600}px` }}>
               <div className="col-12">
                 <div className="row ml-0">
-                  <CompsFileUploadInput
-                    id="file-upload-1"
-                    className="col-6 col-md-4 p-0 border-dark"
-                    existingEntry={currentUser?.UserImages?.[0] || {}}
-                  />
-
-                  <CompsFileUploadInput
-                    id="file-upload-2"
-                    className="col-6 col-md-4 p-0 border-dark"
-                    existingEntry={currentUser?.UserImages?.[1] || {}}
-                  />
-
-                  <CompsFileUploadInput
-                    id="file-upload-3"
-                    className="col-6 col-md-4 p-0 border-dark"
-                    existingEntry={currentUser?.UserImages?.[2] || {}}
-                  />
-
-                  <CompsFileUploadInput
-                    id="file-upload-4"
-                    className="col-6 col-md-4 p-0 border-dark"
-                    existingEntry={currentUser?.UserImages?.[3] || {}}
-                  />
-
-                  <CompsFileUploadInput
-                    id="file-upload-5"
-                    className="col-6 col-md-4 p-0 border-dark"
-                    existingEntry={currentUser?.UserImages?.[4] || {}}
-                  />
-
-                  <CompsFileUploadInput
-                    id="file-upload-6"
-                    className="col-6 col-md-4 p-0 border-dark"
-                    existingEntry={currentUser?.UserImages?.[5] || {}}
-                  />
+                  <div className="col-6 col-md-4 p-0" style={{ border: '1px solid black' }}>
+                    <div style={{ paddingTop: `${(16 / 9) * 100}%`, backgroundImage: `url(${currentUser?.UserImages?.[0]?.image})` }} />
+                  </div>
+                  <div className="col-6 col-md-4 p-0" style={{ border: '1px solid black' }}>
+                    <div style={{ paddingTop: `${(16 / 9) * 100}%`, backgroundImage: `url(${currentUser?.UserImages?.[1]?.image})` }} />
+                  </div>
+                  <div className="col-6 col-md-4 p-0" style={{ border: '1px solid black' }}>
+                    <div style={{ paddingTop: `${(16 / 9) * 100}%`, backgroundImage: `url(${currentUser?.UserImages?.[2]?.image})` }} />
+                  </div>
+                  <div className="col-6 col-md-4 p-0" style={{ border: '1px solid black' }}>
+                    <div style={{ paddingTop: `${(16 / 9) * 100}%`, backgroundImage: `url(${currentUser?.UserImages?.[3]?.image})` }} />
+                  </div>
+                  <div className="col-6 col-md-4 p-0" style={{ border: '1px solid black' }}>
+                    <div style={{ paddingTop: `${(16 / 9) * 100}%`, backgroundImage: `url(${currentUser?.UserImages?.[4]?.image})` }} />
+                  </div>
+                  <div className="col-6 col-md-4 p-0" style={{ border: '1px solid black' }}>
+                    <div style={{ paddingTop: `${(16 / 9) * 100}%`, backgroundImage: `url(${currentUser?.UserImages?.[5]?.image})` }} />
+                  </div>
                 </div>
               </div>
             </div>
