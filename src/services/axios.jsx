@@ -4,15 +4,18 @@ import { toast } from 'react-toastify'
 axios.interceptors.response.use((resp) => resp, (err) => {
   switch (err.response.status) {
     case 401: {
-      toast.error(err.response.data.message, {
-        position: 'bottom-left',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined
-      })
+      if (!err.response.config.hide401Toast) {
+        toast.error(err.response.data.message, {
+          position: 'bottom-left',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        })
+      }
+
       break
     }
     case 406: {

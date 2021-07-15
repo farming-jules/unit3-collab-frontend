@@ -1,3 +1,10 @@
+#layouts-navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 999999;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0));
+  background-color: transparent !important;
+}
 .disable-select {
   user-select: none; /* supported by Chrome and Opera */
  -webkit-user-select: none; /* Safari */

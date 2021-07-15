@@ -6,6 +6,10 @@ import {
   removeRecommendation
 } from '@/actions/my/recommendation'
 
+import {
+  addUserToMatches
+} from '@/actions/my/matches'
+
 export const CREATE_LIKE = 'CREATE_LIKE'
 export const createLike = (id, like) => (dispatch) => new Promise((resolve, reject) => {
   dispatch(loading(CREATE_LIKE, { loading: true }))
@@ -19,6 +23,9 @@ export const createLike = (id, like) => (dispatch) => new Promise((resolve, reje
     }
   }).then((resp) => {
     dispatch(removeRecommendation(id))
+    if (resp.data.matched) {
+      dispatch(addUserToMatches(resp.data.matched))
+    }
     resolve(resp)
   }).catch((err) => {
     reject(err)

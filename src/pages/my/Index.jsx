@@ -12,7 +12,7 @@ import {
 
 import {
   getLikes, resetLikes
-} from '@/actions/my/Likes'
+} from '@/actions/my/likes'
 
 import {
   createLike
@@ -40,8 +40,14 @@ class PagesMyIndex extends React.Component {
     this.props.resetLikes()
   }
 
-  handleCreateLikeSubmit(id, like) {
-    this.props.createLike(id, like)
+  handleCreateLikeSubmit(id, like, cb) {
+    this.props.createLike(id, like).then((resp) => {
+      if (cb) cb()
+
+      if (resp.data.matched) {
+        console.log('do animation')
+      }
+    })
   }
 
   renderIndex() {
@@ -52,7 +58,7 @@ class PagesMyIndex extends React.Component {
 
     const recommendation = recommendations[0]
     return (
-      <div key={recommendation.id} className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center">
         <ViewCard
           information={recommendation}
           createLike={this.handleCreateLikeSubmit}
@@ -65,10 +71,9 @@ class PagesMyIndex extends React.Component {
   render() {
     return (
       <div id="pages-my-index" className="container text-center my-3">
-        <h1 className="mb-3">Index/Main Page</h1>
         <div
           className="d-flex flex-column flex-grow-1 h-100"
-          style={{ position: 'relative', top: '5%' }}
+          style={{ position: 'relative', top: '10%' }}
         >
           {this.renderIndex()}
         </div>
