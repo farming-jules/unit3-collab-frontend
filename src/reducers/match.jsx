@@ -4,7 +4,8 @@ import {
   SET_MATCHES,
   UNSET_MATCHES,
   GET_MATCHES,
-  REMOVE_MATCH
+  REMOVE_MATCH,
+  ADD_USER_TO_MATCHES
 } from '@/actions/my/matches'
 
 const initialState = {
@@ -21,6 +22,11 @@ export default (state = initialState, action) => {
     case UNSET_MATCHES: {
       return produce(state, (draft) => {
         draft.matches = []
+      })
+    }
+    case ADD_USER_TO_MATCHES: {
+      return produce(state, (draft) => {
+        draft.matches.push(action.payload)
       })
     }
     case REMOVE_MATCH: {
