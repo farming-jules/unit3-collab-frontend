@@ -71,10 +71,9 @@ class PagesMyIndex extends React.Component {
   render() {
     return (
       <div id="pages-my-index" className="container text-center my-3">
-        <h1 className="mb-3">Index/Main Page</h1>
         <div
           className="d-flex flex-column flex-grow-1 h-100"
-          style={{ position: 'relative', top: '5%' }}
+          style={{ position: 'relative', top: '10%' }}
         >
           {this.renderIndex()}
         </div>

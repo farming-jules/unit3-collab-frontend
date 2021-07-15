@@ -8,11 +8,10 @@ import ViewCard from '@/layouts/ViewCard'
 
 const PagesMyProfileShow = ({ stateCurrentUser: { currentUser } }) => (
   <div id="pages-my-profile-show" className="container text-center my-3 d-flex align-items-center flex-column">
-    <h1 className="mb-3">Profile Show Page</h1>
     <div className="d-flex flex-column flex-grow-1 align-items-center">
       <div
         className="d-flex"
-        style={{ position: 'relative', top: '5%' }}
+        style={{ position: 'relative', top: '10%' }}
       >
         <ViewCard
           information={currentUser}
