@@ -11,6 +11,7 @@ import {
 import MiniCard from '@/layouts/MiniCard'
 
 import FormsMyProfileShow from '@/forms/my/ProfileShow'
+import ModalsDeleteAccountConfirmation from '@/modals/delete-account'
 
 import { Button, Tabs, Tab, ListGroup } from 'react-bootstrap'
 
@@ -21,16 +22,28 @@ class MySideBar extends React.Component {
     super(props)
 
     this.state = {
-      active: true
+      active: true,
+      showModalConfirmation: false
     }
+
     this.handleProfileDeleteSubmit = this.handleProfileDeleteSubmit.bind(this)
+    this.openModalConfirmation = this.openModalConfirmation.bind(this)
+    this.closeModalConfirmation = this.closeModalConfirmation.bind(this)
   }
 
-  handleProfileDeleteSubmit(values) {
-    this.props.deleteMyProfile(values).then(() => {
+  handleProfileDeleteSubmit() {
+    this.props.deleteMyProfile().then(() => {
       const { history: { push } } = this.props
       push('/')
     })
+  }
+
+  openModalConfirmation() {
+    this.setState({ showModalConfirmation: true })
+  }
+
+  closeModalConfirmation() {
+    this.setState({ showModalConfirmation: false })
   }
 
   renderMatchesTab() {
@@ -109,6 +122,7 @@ class MySideBar extends React.Component {
 
   renderMyProfileSidebar() {
     const { location: { pathname }, stateCurrentUser: { currentUser } } = this.props
+    const { showModalConfirmation } = this.state
 
     if (pathname !== '/my/profile') return null
 
@@ -137,12 +151,19 @@ class MySideBar extends React.Component {
               Edit Info
             </Button>
           </Link>
-          <Link className="align-self-center" to="">
-            <Button variant="warning" type="button" onClick={this.handleProfileDeleteSubmit}>
-              Delete Account
-            </Button>
-          </Link>
+          <Button variant="warning" type="button" onClick={this.openModalConfirmation}>
+            Delete Account
+          </Button>
         </div>
+
+        {
+          showModalConfirmation && (
+            <ModalsDeleteAccountConfirmation
+              close={this.closeModalConfirmation}
+              confirm={this.handleProfileDeleteSubmit}
+            />
+          )
+        }
       </>
     )
   }

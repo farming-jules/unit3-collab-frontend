@@ -18,6 +18,18 @@ axios.interceptors.response.use((resp) => resp, (err) => {
 
       break
     }
+    case 404: {
+      toast.error(err.response.data.message, {
+        position: 'bottom-left',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      })
+      break
+    }
     case 406: {
       err.response.data.errors.forEach((error) => {
         toast.error(error.msg, {

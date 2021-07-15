@@ -83,7 +83,7 @@ class PagesProfileEdit extends React.Component {
       <div id="pages-profile-edit" className="container text-center my-3">
         <h1 className="mb-3">Profile Edit Page</h1>
 
-        <div className="row justify-content-around text-left">
+        <div className="row flex-column-reverse flex-md-row justify-content-around text-left">
           <div className="col-12 col-md-5 col-lg-4">
             <FormsMyProfile
               initialValues={currentUser}
@@ -92,7 +92,7 @@ class PagesProfileEdit extends React.Component {
             />
           </div>
 
-          <div className="col-12 col-md-5 col-lg-4">
+          <div className="col-12 col-md-5 col-lg-4 mb-3 mb-md-0">
             <div className="row">
               <CompsFileUploadInput
                 id="file-upload-1"
