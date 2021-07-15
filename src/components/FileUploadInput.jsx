@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class CompsFileUploadInput extends React.Component {
   constructor(props) {
@@ -10,8 +12,21 @@ class CompsFileUploadInput extends React.Component {
       previewUrl: props?.existingEntry?.image
     }
 
+    this.handleDeleteImage = this.handleDeleteImage.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleReaderOnload = this.handleReaderOnload.bind(this)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.existingEntry.id !== this.props.existingEntry.id) {
+      this.setPreviewUrl(this.props?.existingEntry?.image)
+    }
+  }
+
+  handleDeleteImage() {
+    const { id, removeFile, existingEntry } = this.props
+
+    removeFile(id, existingEntry.id)
   }
 
   handleChange(e) {
@@ -31,12 +46,16 @@ class CompsFileUploadInput extends React.Component {
   handleReaderOnload() {
     const { reader } = this.state
 
-    this.setState({ previewUrl: reader.result })
+    this.setPreviewUrl(reader.result)
+  }
+
+  setPreviewUrl(previewUrl) {
+    this.setState({ previewUrl })
   }
 
   render() {
     const { previewUrl } = this.state
-    const { id, className, isUploading } = this.props
+    const { id, className, isUploading, disableDelete } = this.props
 
     return (
       <div
@@ -65,6 +84,22 @@ class CompsFileUploadInput extends React.Component {
             backgroundPosition: 'center'
           }}
         />
+
+        {
+          previewUrl && (
+            <button
+              id="delete-btn"
+              type="button"
+              onClick={this.handleDeleteImage}
+              style={{
+                position: 'absolute',
+                top: 0,
+                right: 0
+              }}
+              disabled={isUploading || disableDelete}
+            ><FontAwesomeIcon icon={faTrash} /></button>
+          )
+        }
       </div>
     )
   }
@@ -74,8 +109,10 @@ CompsFileUploadInput.propTypes = {
   id: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   uploadFile: PropTypes.func.isRequired,
+  removeFile: PropTypes.func.isRequired,
   isUploading: PropTypes.bool.isRequired,
-  existingEntry: PropTypes.shape().isRequired
+  existingEntry: PropTypes.shape().isRequired,
+  disableDelete: PropTypes.bool.isRequired
 }
 
 export default CompsFileUploadInput
