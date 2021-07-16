@@ -22,7 +22,7 @@ const RenderForm = ({ errors, touched, isSubmitting, hasUnfinishedUpload }) => (
         id="dateOfBirth"
         className={`form-control ${(errors.dateOfBirth && touched.dateOfBirth ? ' is-invalid' : '')}`}
         name="dateOfBirth"
-        type="dateOfBirth"
+        type="date"
       />
       <ErrorMessage component="div" className="invalid-feedback" name="dateOfBirth" />
     </div>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
+import moment from 'moment'
 
 import ViewCard from '@/layouts/ViewCard'
 
@@ -149,7 +150,10 @@ class MySideBar extends React.Component {
               />
             </div>
             <FormsMyProfileShow
-              initialValues={currentUser}
+              initialValues={{
+                ...currentUser,
+                dateOfBirth: moment(currentUser?.dateOfBirth).format('YYYY-MM-DD')
+              }}
             />
           </div>
         </div>

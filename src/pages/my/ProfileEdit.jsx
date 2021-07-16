@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import produce from 'immer'
+import moment from 'moment'
 
 import FormsMyProfile from '@/forms/my/Profile'
 import CompsFileUploadInput from '@/components/FileUploadInput'
@@ -86,7 +87,10 @@ class PagesProfileEdit extends React.Component {
         <div className="row flex-column-reverse flex-md-row justify-content-around text-left">
           <div className="col-12 col-md-5 col-lg-4">
             <FormsMyProfile
-              initialValues={currentUser}
+              initialValues={{
+                ...currentUser,
+                dateOfBirth: moment(currentUser?.dateOfBirth).format('YYYY-MM-DD')
+              }}
               onSubmit={this.handleProfileEditSubmit}
               hasUnfinishedUpload={imageLoading.length > 0}
             />
