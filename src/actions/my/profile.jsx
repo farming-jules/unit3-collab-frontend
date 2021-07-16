@@ -18,7 +18,7 @@ export const deleteUserImageFromUser = (payload) => ({ type: DELETE_USER_IMAGE_F
 export const getMyProfile = (config = {}) => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'GET',
-    url: 'http://localhost:3000/api/my/profile',
+    url: 'https://unit-3-collab.herokuapp.com/api/my/profile',
     withCredentials: true,
     hide401Toast: config.hide401Toast
   }).then((resp) => {
@@ -33,7 +33,7 @@ export const getMyProfile = (config = {}) => (dispatch) => new Promise((resolve,
 export const updateMyProfile = (values) => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'PUT',
-    url: 'http://localhost:3000/api/my/profile',
+    url: 'https://unit-3-collab.herokuapp.com/api/my/profile',
     withCredentials: true,
     data: values
   }).then((resp) => {
@@ -47,7 +47,7 @@ export const updateMyProfile = (values) => (dispatch) => new Promise((resolve, r
 export const deleteMyProfile = () => (dispatch) => new Promise((resolve, reject) => {
   axios({
     method: 'DELETE',
-    url: 'http://localhost:3000/api/my/profile',
+    url: 'https://unit-3-collab.herokuapp.com/api/my/profile',
     withCredentials: true
   }).then((resp) => {
     dispatch(unsetCurrentUser(resp.data))

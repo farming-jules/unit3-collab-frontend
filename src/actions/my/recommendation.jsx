@@ -13,7 +13,7 @@ export const getRecommendations = () => (dispatch) => {
   dispatch(loading(GET_RECOMMENDATIONS, { loading: true }))
   axios({
     method: 'GET',
-    url: 'http://localhost:3000/api/my/recommendations',
+    url: 'https://unit-3-collab.herokuapp.com/api/my/recommendations',
     withCredentials: true
   }).then((resp) => {
     dispatch(setRecommendations(resp.data))

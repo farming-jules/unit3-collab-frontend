@@ -16,7 +16,7 @@ export const getMatches = () => (dispatch) => {
   dispatch(loading(GET_MATCHES, { loading: true }))
   axios({
     method: 'GET',
-    url: 'http://localhost:3000/api/my/matches',
+    url: 'https://unit-3-collab.herokuapp.com/api/my/matches',
     withCredentials: true
   }).then((resp) => {
     dispatch(setMatches(resp.data))

@@ -16,7 +16,7 @@ export const createLike = (id, like) => (dispatch) => new Promise((resolve, reje
   axios({
     withCredentials: true,
     method: 'POST',
-    url: 'http://localhost:3000/api/my/likes',
+    url: 'https://unit-3-collab.herokuapp.com/api/my/likes',
     data: {
       TargetId: id,
       like
