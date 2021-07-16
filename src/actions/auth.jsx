@@ -7,7 +7,7 @@ import {
 
 export const authSignup = (values) => (dispatch) => new Promise((resolve, reject) => axios({
   method: 'POST',
-  url: 'https://unit-3-collab.herokuapp.com/api/auth/signup',
+  url: `${process.env.API_DOMAIN}/api/auth/signup`,
   data: values,
   withCredentials: true
 }).then((resp) => {
@@ -19,7 +19,7 @@ export const authSignup = (values) => (dispatch) => new Promise((resolve, reject
 
 export const authLogin = (values) => (dispatch) => new Promise((resolve, reject) => axios({
   method: 'POST',
-  url: 'https://unit-3-collab.herokuapp.com/api/auth/login',
+  url: `${process.env.API_DOMAIN}/api/auth/login`,
   data: values,
   withCredentials: true
 }).then((resp) => {
@@ -31,7 +31,7 @@ export const authLogin = (values) => (dispatch) => new Promise((resolve, reject)
 
 export const authLogout = () => (dispatch) => new Promise((resolve, reject) => axios({
   method: 'DELETE',
-  url: 'https://unit-3-collab.herokuapp.com/api/auth/logout',
+  url: `${process.env.API_DOMAIN}/api/auth/logout`,
   withCredentials: true
 }).then((resp) => {
   dispatch(unsetCurrentUser())

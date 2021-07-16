@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
@@ -9,6 +10,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../public'),
+    publicPath: '/',
     filename: '[name].[fullhash].js'
   },
   resolve: {
@@ -54,6 +56,9 @@ module.exports = {
     }
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_DOMAIN': JSON.stringify('https://fswdi-jp-project3-api.herokuapp.com')
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/template.html'),
       filename: 'index.html'

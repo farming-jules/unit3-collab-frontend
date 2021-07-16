@@ -13,7 +13,7 @@ export const getLikes = () => (dispatch) => {
   dispatch(loading(GET_LIKES, { loading: true }))
   axios({
     method: 'GET',
-    url: 'https://unit-3-collab.herokuapp.com/api/my/likes',
+    url: `${process.env.API_DOMAIN}/api/my/likes`,
     withCredentials: true
   }).then((resp) => {
     dispatch(setLikes(resp.data))
