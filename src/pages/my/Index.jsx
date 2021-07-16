@@ -12,7 +12,7 @@ import {
 
 import {
   getLikes, resetLikes
-} from '@/actions/my/likes'
+} from '@/actions/my/likesd'
 
 import {
   createLike

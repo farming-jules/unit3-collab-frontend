@@ -5,7 +5,7 @@ import {
   UNSET_LIKES,
   GET_LIKES,
   REMOVE_LIKE
-} from '@/actions/my/likes'
+} from '@/actions/my/likesd'
 
 const initialState = {
   likes: [],
