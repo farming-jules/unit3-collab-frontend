@@ -70,7 +70,7 @@ class PagesMyIndex extends React.Component {
 
   render() {
     return (
-      <div id="pages-my-index" className="container text-center my-3">
+      <div id="pages-my-index" className="d-flex align-items-center container text-center my-3">
         <div
           className="d-flex flex-column flex-grow-1 h-100"
           style={{ position: 'relative', top: '10%' }}

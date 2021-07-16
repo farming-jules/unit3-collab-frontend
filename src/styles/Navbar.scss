@@ -13,6 +13,10 @@
  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
+#pages-my-index {
+  min-height: 100vh;
+}
+
 #sidebar {
   font-family: "Poppins", sans-serif;
   background: #f8f8f8;
