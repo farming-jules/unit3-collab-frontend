@@ -183,7 +183,7 @@ class MySideBar extends React.Component {
       const { active } = this.state
 
       return (
-        <div id="sidebar" className={active ? 'active' : null}>
+        <div id="sidebar" className={`${active ? 'active' : null} d-none d-lg-block`}>
           {this.renderMyRecommendationSidebar()}
           {this.renderMyProfileSidebar()}
         </div>

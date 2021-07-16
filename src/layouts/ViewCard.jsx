@@ -28,7 +28,7 @@ class ViewCard extends React.Component {
     return (
       <Card
         className={`animate__animated ${fadeLeft ? 'animate__fadeOutLeft' : ''} ${fadeRight ? 'animate__fadeOutRight' : ''}`}
-        style={{ width: '300px', minWidth: '300px', border: '1px solid black' }}
+        style={{ width: '350px', minWidth: '350px', border: '1px solid black' }}
       >
         <Carousel>
           {
